@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/tollbar"
+        android:id="@+id/include"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/include"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/include"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rel_Edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/twenty">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="@dimen/twenty_five"
+                    android:layout_height="@dimen/twenty_five"
+                    android:layout_marginRight="@dimen/ten"
+                    android:src="@drawable/edit">
+
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ten"
+                    android:layout_toRightOf="@+id/image"
+                    android:text="Edit"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twenty">
+
+
+                </TextView>
+
+            </RelativeLayout>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/hundred_twenty"
+                android:layout_height="@dimen/hundred_twenty"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/twenty"
+                android:src="@drawable/profileimage"
+                app:civ_border_width="@dimen/five" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/thirty"
+                android:layout_marginRight="@dimen/ten"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ten"
+                    android:layout_toRightOf="@+id/image"
+                    android:text="PERSONAL INFORMATION"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_margin="@dimen/ten">
+
+
+                </TextView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Registration Number"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_RegistrationNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="SA-810365"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="User Name"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_UserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="Sunil Kumar dash"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Primary Contact"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_PrimaryContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="+91 1234567890"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Secondary Contact"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_SecondaryContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="+91 1234567890"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:hint="Email ID."
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_driverEmailId"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/ten"
+                        android:text="sunil@gmail.com"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/image"
+                    android:text="KYC DETAILS"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_margin="@dimen/ten">
+
+
+                </TextView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Aadhar Number"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_AadharNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="636607831824"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="PAN Card Number"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_PANCardNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="BGMPN9685D"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Driving Licence"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_DrivingLicence"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="OD0420190004448"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:hint="KYC Status"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_KYCStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="PENDING"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/image"
+                    android:text="BANK DETAILS"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_margin="@dimen/ten">
+
+
+                </TextView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Bank Name"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_BankName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="FEDERAL BANK"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="IFSC Code"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_IFSCCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="FDRL0005555"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Account Number"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_AccountNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="55550104019839"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Bank Verification Status"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_BankVerificationStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="PENDING"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/image"
+                    android:text="NOMINEE DETAILS"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_margin="@dimen/ten">
+
+
+                </TextView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Nominee Name"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_FullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="SWARNAPRABHA NANDA"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:hint="Relationship With Nominee"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_RelationshipNominee"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="Mother"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/ten"
+                    android:layout_marginBottom="@dimen/fifteen"
+                    android:hint="Contact Number"
+                    app:boxStrokeColor="#393187"
+                    app:hintTextColor="#393187">
+
+                    <EditText
+                        android:id="@+id/text_ContactNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="phone"
+                        android:padding="@dimen/ten"
+                        android:text="8763042868"
+                        android:textColor="#4D4D4E"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>

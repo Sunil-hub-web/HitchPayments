@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/hundred_fifty"
+            android:layout_height="@dimen/seventy"
+            android:layout_margin="@dimen/ten"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo"></ImageView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginBottom="@dimen/twenty">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/seventy"
+                android:layout_height="@dimen/seventy"
+                android:src="@drawable/profileimage" />
+
+            <TextView
+                android:id="@+id/nav_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/profile_image"
+                android:text="Nakul Kumar"
+                android:textColor="@color/danger"
+                android:textSize="@dimen/edittextsize"></TextView>
+
+            <TextView
+                android:id="@+id/nav_MobileNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nav_userName"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_toRightOf="@id/profile_image"
+                android:text="+91 7853074379"
+                android:textColor="@color/danger"
+                android:textSize="@dimen/edittextsize"></TextView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/header"
+        android:background="@color/blue"
+        android:elevation="@dimen/five" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="@dimen/thirty"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nav_NPCITAG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:drawableLeft="@drawable/download"
+            android:drawablePadding="@dimen/ten"
+            android:text="NPCI TAG"
+            android:textAllCaps="false"
+            android:textColor="#5F5E5E"
+            android:textSize="@dimen/edittextsize"></TextView>
+
+        <TextView
+            android:id="@+id/nav_TagActivation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/seventeen"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:drawableLeft="@drawable/online_payment_confirmation_transaction_security_icon"
+            android:drawablePadding="@dimen/eight"
+            android:text="Tag Activation"
+            android:textColor="#5F5E5E"
+            android:textSize="@dimen/edittextsize"></TextView>
+
+        <TextView
+            android:id="@+id/nav_ActivatePendingFastag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:drawableLeft="@drawable/fast_online_payment_creditcard_transaction"
+            android:drawablePadding="@dimen/ten"
+            android:text="Activate Pending Fastag"
+            android:textAllCaps="false"
+            android:textColor="#5F5E5E"
+            android:textSize="@dimen/edittextsize"></TextView>
+
+        <TextView
+            android:id="@+id/nav_FastagInventory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:drawableLeft="@drawable/fast_online_payment_creditcard_transaction"
+            android:drawablePadding="@dimen/ten"
+            android:text="Fastag Inventory"
+            android:textColor="#5F5E5E"
+            android:textSize="@dimen/edittextsize"></TextView>
+
+        <TextView
+            android:id="@+id/nav_Report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty_two"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:drawableLeft="@drawable/accounting_finance_analytics_chart_checklist_icon"
+            android:drawablePadding="@dimen/ten"
+            android:text="Report"
+            android:textColor="#5F5E5E"
+            android:textSize="@dimen/edittextsize"></TextView>
+
+        <TextView
+            android:id="@+id/nav_Logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty_two"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:drawableLeft="@drawable/exit"
+            android:drawablePadding="@dimen/ten"
+            android:text="Logout"
+            android:textColor="#5F5E5E"
+            android:textSize="@dimen/edittextsize"></TextView>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

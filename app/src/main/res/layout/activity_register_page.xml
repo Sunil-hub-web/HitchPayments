@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_marginRight="@dimen/ten"
+        android:layout_marginTop="@dimen/hundred">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/twenty"
+            android:text="Sign Up"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twenty"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Enter User Name"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue">
+
+            <EditText
+                android:id="@+id/edit_UserName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="text"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/blacktext"
+                android:textSize="@dimen/edittextsize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Enter Mobile No"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue">
+
+            <EditText
+                android:id="@+id/edit_MobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/blacktext"
+                android:textSize="@dimen/edittextsize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Enter Your Email Id"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue">
+
+            <EditText
+                android:id="@+id/edit_EmailId"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/blacktext"
+                android:textSize="@dimen/edittextsize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_signUp"
+            style="@style/designButton"
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="10dp"
+            android:padding="@dimen/twelve"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"
+            app:backgroundTint="@color/blue"></Button>
+
+        <RelativeLayout
+            android:id="@+id/r1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/twenty">
+
+            <TextView
+                android:id="@+id/login2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already Have an account?"
+                android:textColor="#817F7F"
+                android:textSize="@dimen/textsize" />
+
+            <TextView
+                android:id="@+id/text_SignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/login2"
+                android:text=" Sign In"
+                android:textColor="#00acec"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

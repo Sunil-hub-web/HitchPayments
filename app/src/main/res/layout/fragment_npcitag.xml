@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/tollbar">
+
+    </include>
+
+    <LinearLayout
+        android:id="@+id/lin_Sendotp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_below="@id/include">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Enter Vehicle Registration Number"
+            app:boxStrokeColor="@color/red"
+            app:hintTextColor="@color/red">
+
+            <EditText
+                android:id="@+id/edit_MobileNo1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/edittextsize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_SearchStatues"
+            style="@style/designButton"
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/ten"
+            android:padding="@dimen/twelve"
+            android:text="Search Status"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"
+            app:backgroundTint="@color/blue">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

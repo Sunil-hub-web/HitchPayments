@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/fifty"
+        android:layout_marginEnd="@dimen/ten"
+        android:layout_marginBottom="@dimen/ten"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="@dimen/hundred"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="@dimen/fifteen"
+            android:layout_gravity="center"
+            android:src="@drawable/logo">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/twenty"
+            android:text="Sign in"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/twenty"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/editMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Enter User Name Or Mobile No"
+            app:boxStrokeColor="@color/red"
+            app:hintTextColor="@color/red"
+            android:theme="@style/MyTextInputLayout_overlay">
+
+            <EditText
+                android:id="@+id/edit_MobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/edittextsize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--<TextView
+            android:id="@+id/otpviewtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/twenty"
+            android:text="Enter OTP Here"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize">
+
+        </TextView>-->
+
+        <!-- <in.aabhasjindal.otptextview.OtpTextView
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/opt"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/black"
+            android:elevation="@dimen/ten"
+            android:textColor="#4C92D8"
+            app:bar_active_color="@color/blue"
+            app:bar_enabled="true"
+            app:bar_error_color="#F44336"
+            app:bar_height="@dimen/three"
+            app:bar_inactive_color="@color/cyan"
+            app:bar_margin="@dimen/five"
+            app:bar_success_color="#393187"
+            app:height="@dimen/forty"
+            app:length="6"
+            app:otp_text_size="24dp"
+            app:width="@dimen/forty" />-->
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/editEnterOTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Enter OTP"
+            app:boxStrokeColor="@color/red"
+            app:hintTextColor="@color/red"
+            android:theme="@style/MyTextInputLayout_overlay">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_EnterOTP"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="number"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/edittextsize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="@dimen/twenty"
+            android:text="Forgot password?"
+            android:textColor="@color/danger"
+            android:textSize="@dimen/edittextsize">
+
+        </TextView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_signin"
+            style="@style/designButton"
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="10dp"
+            android:padding="@dimen/twelve"
+            android:text="Sign in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"
+            app:backgroundTint="@color/blue">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <!-- <RelativeLayout
+            android:id="@+id/r1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/twenty">
+
+            <TextView
+                android:id="@+id/login2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't Have an account?"
+                android:textColor="#817F7F"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_signUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/login2"
+                android:text=" Sign Up"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize" />
+
+
+        </RelativeLayout>-->
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

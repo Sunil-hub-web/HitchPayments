@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/tollbar">
+
+    </include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_below="@+id/include">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/ten">
+
+                <RadioButton
+                    android:id="@+id/text_NewCustomer"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="New Customer"
+                    android:buttonTint="@color/cyan"
+                    >
+
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/text_ExistingCustomer"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Existing Customer"
+                    android:buttonTint="@color/cyan">
+
+                </RadioButton>
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/lin_SearchStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:hint="Enter Registered Mobile Number"
+                    app:boxStrokeColor="@color/red"
+                    app:hintTextColor="@color/red">
+
+                    <EditText
+                        android:id="@+id/edit_MobileNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textcolor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_SearchStatues"
+                    style="@style/designButton"
+                    android:layout_width="@dimen/two_hundred"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/ten"
+                    android:padding="@dimen/twelve"
+                    android:text="Search Status"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/blue">
+
+                </com.google.android.material.button.MaterialButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_Sendotp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/editMobileNo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:hint="Customer Number"
+                    app:boxStrokeColor="@color/red"
+                    app:hintTextColor="@color/red">
+
+                    <EditText
+                        android:id="@+id/edit_MobileNo1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textcolor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/editOTP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:hint="Enter Otp"
+                    app:boxStrokeColor="@color/red"
+                    app:hintTextColor="@color/red">
+
+                    <EditText
+                        android:id="@+id/edit_OTP"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textcolor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_Sendotp"
+                    style="@style/designButton"
+                    android:layout_width="@dimen/two_hundred"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/ten"
+                    android:padding="@dimen/twelve"
+                    android:text="Send Otp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/blue">
+
+                </com.google.android.material.button.MaterialButton>
+
+            </LinearLayout>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                app:cardCornerRadius="@dimen/five"
+                app:cardElevation="@dimen/ten"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/lin_searchDetails"
+                    android:visibility="gone"
+                    android:background="#FFFFFF"
+                    android:elevation="@dimen/ten">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:layout_margin="@dimen/ten">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Customer Id"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="1879141"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:layout_margin="@dimen/ten">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Customer Name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="Alok Ranjan Biswal ."
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:layout_margin="@dimen/ten">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Contact Number"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="9337715820"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:layout_margin="@dimen/ten">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Email Id"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/edittextsize">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:layout_margin="@dimen/ten">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Select Barcode"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                        <Spinner
+                            android:id="@+id/spinner_SelectBarcode"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/thirty"
+                            android:layout_margin="@dimen/five"
+                            android:layout_weight="1"
+                            android:background="@drawable/edittextback"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/edittextsize"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:layout_margin="@dimen/ten">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Select Product"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                        <Spinner
+                            android:id="@+id/spinner_SelectProduct"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/thirty"
+                            android:layout_margin="@dimen/five"
+                            android:layout_weight="1"
+                            android:background="@drawable/edittextback"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/edittextsize"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:layout_margin="@dimen/ten">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Vehicle Data Type"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                        <Spinner
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/thirty"
+                            android:layout_margin="@dimen/five"
+                            android:layout_weight="1"
+                            android:background="@drawable/edittextback"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/edittextsize"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:layout_margin="@dimen/ten">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Vehicle Number/Chassis Number"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize">
+
+                        </TextView>
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/edittextsize"
+                            android:background="@drawable/edittextback">
+
+                        </EditText>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_MakePayment"
+                        style="@style/designButton"
+                        android:layout_width="@dimen/two_hundred"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="@dimen/ten"
+                        android:layout_marginBottom="10dp"
+                        android:padding="@dimen/twelve"
+                        android:text="Make Payment"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"
+                        app:backgroundTint="@color/blue">
+
+                    </com.google.android.material.button.MaterialButton>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+</RelativeLayout>
