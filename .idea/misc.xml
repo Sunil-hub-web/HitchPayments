@@ -25,17 +25,20 @@
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/fragment_profile.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/fragment_report.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/fragment_tagactivation.xml" value="0.22083333333333333" />
+        <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/fragment_wallet.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/home.xml" value="0.17592592592592593" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/homeimage_slider.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/nav_header.xml" value="0.20224719101123595" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/report_fragment.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/reportdetails.xml" value="0.22083333333333333" />
-        <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/reportdetails_existcustomer.xml" value="0.22083333333333333" />
+        <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/reportdetails_existcustomer.xml" value="0.22" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/reportdetails_newcustomer.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/spinnerdropdownitem.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/spinneritem.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/tollbar.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/transctiondetails.xml" value="0.22083333333333333" />
+        <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/view_walletdetails.xml" value="0.22083333333333333" />
+        <entry key="..\:/New folder/HitchPayments/app/src/main/res/layout/wallet.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/menu/menu_navigation_home.xml" value="0.22083333333333333" />
         <entry key="..\:/New folder/HitchPayments/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.129" />
       </map>

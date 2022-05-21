@@ -44,16 +44,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ten"
-            android:hint="Enter User Name Or Mobile No"
+            android:hint="Enter User Id"
             app:boxStrokeColor="@color/red"
             app:hintTextColor="@color/red"
             android:theme="@style/MyTextInputLayout_overlay">
 
             <EditText
-                android:id="@+id/edit_MobileNo"
+                android:id="@+id/edit_UserId"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/fifty"
-                android:inputType="number"
+                android:inputType="text"
                 android:maxLength="10"
                 android:padding="@dimen/ten"
                 android:textColor="@color/textcolor"
@@ -116,7 +116,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+     <!--   <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -126,7 +126,7 @@
             android:textSize="@dimen/edittextsize">
 
         </TextView>
-
+-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signin"
             style="@style/designButton"
@@ -138,7 +138,7 @@
             android:layout_marginRight="@dimen/ten"
             android:layout_marginBottom="10dp"
             android:padding="@dimen/twelve"
-            android:text="Sign in"
+            android:text="Send OTP"
             android:textColor="@color/white"
             android:textSize="@dimen/textsize"
             android:textStyle="bold"

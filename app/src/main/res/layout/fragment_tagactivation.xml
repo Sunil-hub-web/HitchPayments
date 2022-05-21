@@ -205,6 +205,7 @@
                         </TextView>
 
                         <TextView
+                            android:id="@+id/text_CustomerId"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -233,11 +234,11 @@
                         </TextView>
 
                         <TextView
+                            android:id="@+id/text_CustomerName"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:text="Alok Ranjan Biswal ."
                             android:textSize="@dimen/textsize">
 
                         </TextView>
@@ -261,11 +262,11 @@
                         </TextView>
 
                         <TextView
+                            android:id="@+id/text_ContactNumber"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:text="9337715820"
                             android:textSize="@dimen/textsize">
 
                         </TextView>
@@ -289,6 +290,7 @@
                         </TextView>
 
                         <TextView
+                            android:id="@+id/text_EmailId"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -427,7 +429,7 @@
                         android:layout_marginRight="@dimen/ten"
                         android:layout_marginBottom="10dp"
                         android:padding="@dimen/twelve"
-                        android:text="Make Payment"
+                        android:text="Make Payment &amp; Activate Tag"
                         android:textColor="@color/white"
                         android:textSize="@dimen/textsize"
                         android:textStyle="bold"

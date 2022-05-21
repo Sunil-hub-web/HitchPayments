@@ -12,8 +12,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="@dimen/ten">
+            android:layout_margin="@dimen/ten"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,9 +33,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter First Name"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_FirstName"
@@ -45,7 +45,7 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,9 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter Last Name"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_LastName"
@@ -67,7 +67,7 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,9 +77,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter PAN Card Number"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_PANCardNumber"
@@ -89,7 +89,7 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,9 +99,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter Date Of Birth"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_DateOfBirth"
@@ -111,10 +111,9 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -123,9 +122,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter Gender"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_Gender"
@@ -135,7 +134,7 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,9 +144,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter Pincode"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_Pincode"
@@ -157,7 +156,7 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,9 +166,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter Address 1"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_Address1"
@@ -179,7 +178,7 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -189,9 +188,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter Address 2"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_Address2"
@@ -201,7 +200,7 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -210,15 +209,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/forty_five"
                 android:layout_margin="@dimen/ten"
+                android:background="@drawable/deshbord_bg"
                 android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
                 android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
                 android:paddingLeft="@dimen/two"
                 android:paddingRight="@dimen/two"
+                android:spinnerMode="dropdown"
                 android:text="Please Select Your Area"
                 android:textColor="#25297A"
-                android:textSize="@dimen/fifteen"
-                android:background="@drawable/deshbord_bg"/>
+                android:textSize="@dimen/fifteen" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -226,9 +225,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:hint="Enter Address Proof Number"
+                android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red"
-                android:theme="@style/MyTextInputLayout_overlay">
+                app:hintTextColor="@color/red">
 
                 <EditText
                     android:id="@+id/edit_AddressProofNumber"
@@ -238,7 +237,7 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize"/>
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -248,8 +247,8 @@
                 android:layout_width="@dimen/two_hundred"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/ten"
                 android:layout_margin="@dimen/fifteen"
+                android:layout_marginLeft="@dimen/ten"
                 android:padding="@dimen/twelve"
                 android:text="Verify customer"
                 android:textColor="@color/white"

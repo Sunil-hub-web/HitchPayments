@@ -35,7 +35,7 @@
                     android:layout_weight="0.9"
                     android:text="CUSTOMER NAME"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -63,7 +63,7 @@
                     android:layout_weight="0.9"
                     android:text="CUSTOMER ID"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -92,7 +92,7 @@
                     android:layout_weight="0.9"
                     android:text="PAN CARD NUMBER"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -120,7 +120,7 @@
                     android:layout_weight="0.9"
                     android:text="MOBILE NUMBER"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -148,7 +148,7 @@
                     android:layout_weight="0.9"
                     android:text="BAR CODE"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -176,7 +176,7 @@
                     android:layout_weight="0.9"
                     android:text="TAG ID"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -204,7 +204,7 @@
                     android:layout_weight="0.9"
                     android:text="TID"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -232,7 +232,7 @@
                     android:layout_weight="0.9"
                     android:text="PAYMENT AMOUNT"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -260,7 +260,7 @@
                     android:layout_weight="0.9"
                     android:text="PAYMENT ID"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -288,7 +288,7 @@
                     android:layout_weight="0.9"
                     android:text="DATE OF ACTIVATION"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -316,7 +316,7 @@
                     android:layout_weight="0.9"
                     android:text="TIME OF ACTIVATION"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 
@@ -344,7 +344,7 @@
                     android:layout_weight="0.9"
                     android:text="FASTAG STATUS"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
+                    android:textSize="@dimen/twelve">
 
                 </TextView>
 

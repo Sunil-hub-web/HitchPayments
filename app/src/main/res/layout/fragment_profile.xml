@@ -21,7 +21,7 @@
             android:layout_below="@id/include"
             android:orientation="vertical">
 
-            <RelativeLayout
+         <!--   <RelativeLayout
                 android:id="@+id/rel_Edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
 
                 </TextView>
 
-            </RelativeLayout>
+            </RelativeLayout>-->
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -102,7 +102,8 @@
                         android:padding="@dimen/ten"
                         android:text="SA-810365"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,7 +126,8 @@
                         android:padding="@dimen/ten"
                         android:text="Sunil Kumar dash"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -148,7 +150,8 @@
                         android:padding="@dimen/ten"
                         android:text="+91 1234567890"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -171,11 +174,12 @@
                         android:padding="@dimen/ten"
                         android:text="+91 1234567890"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
+            <!--    <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -194,7 +198,7 @@
                         android:textColor="#4D4D4E"
                         android:textSize="@dimen/edittextsize" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -227,7 +231,8 @@
                         android:padding="@dimen/ten"
                         android:text="636607831824"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -250,7 +255,8 @@
                         android:padding="@dimen/ten"
                         android:text="BGMPN9685D"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -273,7 +279,8 @@
                         android:padding="@dimen/ten"
                         android:text="OD0420190004448"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -294,7 +301,8 @@
                         android:padding="@dimen/ten"
                         android:text="PENDING"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -329,7 +337,8 @@
                         android:padding="@dimen/ten"
                         android:text="FEDERAL BANK"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -352,7 +361,8 @@
                         android:padding="@dimen/ten"
                         android:text="FDRL0005555"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -375,7 +385,8 @@
                         android:padding="@dimen/ten"
                         android:text="55550104019839"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -398,7 +409,8 @@
                         android:padding="@dimen/ten"
                         android:text="PENDING"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -433,7 +445,8 @@
                         android:padding="@dimen/ten"
                         android:text="SWARNAPRABHA NANDA"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -456,7 +469,8 @@
                         android:padding="@dimen/ten"
                         android:text="Mother"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -480,13 +494,12 @@
                         android:padding="@dimen/ten"
                         android:text="8763042868"
                         android:textColor="#4D4D4E"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 

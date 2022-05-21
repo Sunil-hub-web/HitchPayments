@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/tollbar">
+
+    </include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/include">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/editMobileNo"
+                android:layout_width="0dp"
+                android:layout_weight="1.2"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Amount"
+                app:boxStrokeColor="@color/red"
+                app:hintTextColor="@color/red"
+                android:theme="@style/MyTextInputLayout_overlay">
+
+                <EditText
+                    android:id="@+id/edit_MobileNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/forty_five"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/edittextsize"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_signin"
+                style="@style/designButton"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/ten"
+                android:padding="@dimen/twelve"
+                android:text="Make Payment"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve"
+                android:textStyle="bold"
+                app:backgroundTint="@color/blue">
+
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
+
+
+
+        <include layout="@layout/wallet"></include>
+
+        <include layout="@layout/wallet"></include>
+
+
+      <!--  <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewWalletRecycler">
+
+        </androidx.recyclerview.widget.RecyclerView>-->
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

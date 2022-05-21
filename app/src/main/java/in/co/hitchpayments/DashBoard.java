@@ -24,13 +24,14 @@ import in.co.fragment.NPCITagFragment;
 import in.co.fragment.ProfileFragment;
 import in.co.fragment.ReportFragment;
 import in.co.fragment.TagActivationFragment;
+import in.co.fragment.WalletFragment;
 
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     private ChipNavigationBar bottomNavigation;
     DrawerLayout myDrawer;
     NavigationView navigationView;
-    TextView nav_NPCITAG,nav_TagActivation,nav_ActivatePendingFastag,nav_FastagInventory,nav_Report,nav_Logout;
+    TextView nav_NPCITAG,nav_TagActivation,nav_FastagInventory,nav_Report,nav_Logout,nav_Wallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +51,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         nav_Logout = header.findViewById(R.id.nav_Logout);
         nav_NPCITAG = header.findViewById(R.id.nav_NPCITAG);
         nav_TagActivation = header.findViewById(R.id.nav_TagActivation);
-        nav_ActivatePendingFastag = header.findViewById(R.id.nav_ActivatePendingFastag);
+        //nav_ActivatePendingFastag = header.findViewById(R.id.nav_ActivatePendingFastag);
         nav_FastagInventory = header.findViewById(R.id.nav_FastagInventory);
         nav_Report = header.findViewById(R.id.nav_Report);
+        nav_Wallet = header.findViewById(R.id.nav_Wallet);
 
         nav_NPCITAG.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,10 +124,19 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
 
-        nav_ActivatePendingFastag.setOnClickListener(new View.OnClickListener() {
+        nav_Wallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                myDrawer.closeDrawer(GravityCompat.START);
+
+                bottomNavigation.setItemSelected(R.id.home, false);
+
+                WalletFragment walletFragment = new WalletFragment();
+                FragmentTransaction transaction =  getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, walletFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

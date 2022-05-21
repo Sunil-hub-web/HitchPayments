@@ -39,9 +39,9 @@ public class FastagInventoryFragment extends Fragment {
 
         name_text.setText("Fastag Inventory");
 
-        fastagInventory.add(new FastagInventory_ModelClass("1722700","E28011052000714D08DB0A","34161FA8203289DA0B2C35","9777022225"));
-        fastagInventory.add(new FastagInventory_ModelClass("1722700","E28011052000714D08DB0A","34161FA8203289DA0B2C35","9777022225"));
-        fastagInventory.add(new FastagInventory_ModelClass("1722700","E28011052000714D08DB0A","34161FA8203289DA0B2C35","9777022225"));
+        fastagInventory.add(new FastagInventory_ModelClass("1722700","E28011052000714D08D","4","Allocated"));
+        fastagInventory.add(new FastagInventory_ModelClass("1722700","E28011052000714D08D","4","Allocated"));
+        fastagInventory.add(new FastagInventory_ModelClass("1722700","E28011052000714D08D","4","Allocated"));
 
         linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         fastagInventoryAdapter = new FastagInventoryAdapter(fastagInventory,getActivity());
