@@ -17,9 +17,11 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
@@ -188,6 +190,19 @@ public class NPCITagFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Log.d("responceVolley", "" + error);
+
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });

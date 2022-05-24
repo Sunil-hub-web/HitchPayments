@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import in.co.hitchpayments.LoginPage;
 import in.co.hitchpayments.SplashScreen;
 
 public class SessionManager {
@@ -39,6 +40,17 @@ public class SessionManager {
         this.context = context;
         sharedprefernce = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = sharedprefernce.edit();
+    }
+
+    public void setSalesAgentId(String id){
+
+        editor.putString("IS-SalesId",id);
+        editor.commit();
+    }
+
+    public String getSalesAgentId(){
+
+        return sharedprefernce.getString("IS-SalesId","Default");
     }
 
 
@@ -242,6 +254,17 @@ public class SessionManager {
         return sharedprefernce.getString(IS_ContactNumber,"DEFAULT");
     }
 
+    public void setTotalBalance(String totalBalance){
+
+        editor.putString("TotalBalance",totalBalance);
+        editor.commit();
+
+    }
+    public String getTotalBalance(){
+
+        return sharedprefernce.getString("TotalBalance","DEFAULT");
+    }
+
 
     public static String getIsLogin() {
         return IS_LOGIN;
@@ -252,7 +275,7 @@ public class SessionManager {
         // Clearing all data from Shared Preferences
         editor.clear();
         editor.commit();
-        Intent i = new Intent(context, SplashScreen.class);
+        Intent i = new Intent(context,LoginPage.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);

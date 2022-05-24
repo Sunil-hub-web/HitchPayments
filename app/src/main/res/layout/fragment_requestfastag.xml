@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/tollbar">
+
+        </include>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:text="Fastag Class"
+            android:layout_marginTop="@dimen/ten"
+            android:textColor="@color/red">
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spinner_FastagClass"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty_five"
+            android:layout_margin="@dimen/ten"
+            android:background="@drawable/deshbord_bg"
+            android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/two"
+            android:paddingRight="@dimen/two"
+            android:spinnerMode="dropdown"
+            android:text="Select Fastag Class"
+            android:textColor="#25297A"
+            android:textSize="@dimen/fifteen" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Number Of Fastag"
+            android:theme="@style/MyTextInputLayout_overlay"
+            app:boxStrokeColor="@color/red"
+            app:hintTextColor="@color/red">
+
+            <EditText
+                android:id="@+id/edit_NumberOfFastag"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="text"
+                android:maxLength="10"
+                android:padding="@dimen/five"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/edittextsize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_SendRequest"
+            style="@style/designButton"
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/ten"
+            android:padding="@dimen/twelve"
+            android:text="Send Request"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"
+            app:backgroundTint="@color/blue"></com.google.android.material.button.MaterialButton>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/requestFastTagRecycler"
+            android:layout_marginTop="@dimen/ten">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

@@ -49,16 +49,14 @@
 
             </RadioGroup>
 
-          <!--  <androidx.recyclerview.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recyclerReport">
 
 
-            </androidx.recyclerview.widget.RecyclerView>-->
+            </androidx.recyclerview.widget.RecyclerView>
 
-            <include layout="@layout/reportdetails_existcustomer"></include>
-            <include layout="@layout/reportdetails_newcustomer"></include>
 
 
         </LinearLayout>

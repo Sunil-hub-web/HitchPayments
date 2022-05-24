@@ -24,7 +24,7 @@
             android:layout_marginBottom="@dimen/twenty">
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
+                android:id="@+id/nav_profile_image"
                 android:layout_width="@dimen/seventy"
                 android:layout_height="@dimen/seventy"
                 android:src="@drawable/profileimage" />
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/ten"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/profile_image"
+                android:layout_toRightOf="@id/nav_profile_image"
                 android:text="123"
                 android:textColor="@color/danger"
                 android:textSize="@dimen/edittextsize"></TextView>
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nav_userid"
                 android:layout_marginLeft="@dimen/ten"
-                android:layout_toRightOf="@id/profile_image"
+                android:layout_toRightOf="@id/nav_profile_image"
                 android:text="Sunil kumar"
                 android:textColor="@color/danger"
                 android:textSize="@dimen/edittextsize"></TextView>
@@ -146,6 +146,19 @@
             android:drawableLeft="@drawable/wallet"
             android:drawablePadding="@dimen/ten"
             android:text="Wallet"
+            android:textColor="#5F5E5E"
+            android:textSize="@dimen/edittextsize"></TextView>
+
+        <TextView
+            android:id="@+id/nav_RequestFastag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty_two"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:drawableLeft="@drawable/accounting_finance_analytics_chart_checklist_icon"
+            android:drawablePadding="@dimen/ten"
+            android:text="Request Fastag"
             android:textColor="#5F5E5E"
             android:textSize="@dimen/edittextsize"></TextView>
 

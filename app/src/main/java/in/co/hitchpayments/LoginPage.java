@@ -156,6 +156,9 @@ public class LoginPage extends AppCompatActivity {
                             Toast.makeText(LoginPage.this, status1, Toast.LENGTH_LONG).show();
                         }
 
+                    }else{
+
+                        Toast.makeText(LoginPage.this, "User Id is Invalide", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
@@ -269,6 +272,7 @@ public class LoginPage extends AppCompatActivity {
                             String kycStatus = jsonObject_status.getString("kycStatus");
 
 
+                            sessionManager.setSalesAgentId(salesagentId);
                             sessionManager.setRegistrationNumber(salesAgentRegdNum);
                             sessionManager.setUserName(Fname +" "+ Lname);
                             sessionManager.setPrimaryContact(ContactPrimary);
@@ -286,11 +290,18 @@ public class LoginPage extends AppCompatActivity {
                             sessionManager.setContactNumber(contactNumber);
                             sessionManager.setProfile(ProfileImage);
 
+                            sessionManager.setLogin();
+
                             Intent intent = new Intent(LoginPage.this,DashBoard.class);
                             startActivity(intent);
 
+
+
                         }
 
+                    }else{
+
+                        Toast.makeText(LoginPage.this, "incorract Otp", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
@@ -337,4 +348,14 @@ public class LoginPage extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(sessionManager.isLogin()){
+
+            Intent intent = new Intent(LoginPage.this,DashBoard.class);
+            startActivity(intent);
+        }
+    }
 }

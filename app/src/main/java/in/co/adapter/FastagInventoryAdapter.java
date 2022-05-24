@@ -40,9 +40,19 @@ public class FastagInventoryAdapter extends RecyclerView.Adapter<FastagInventory
         FastagInventory_ModelClass fastag = fastagInventory.get(position);
 
         holder.text_CLASSOFTAG.setText(fastag.getCLASS_OF_TAG());
-        holder.text_STATUS.setText(fastag.getSTATUS());
         holder.text_BARCODE.setText(fastag.getBAR_CODE());
         holder.text_TAGID.setText(fastag.getTAG_ID());
+
+        String status = fastag.getSTATUS();
+
+        if(status.equals("1")){
+
+            holder.text_STATUS.setText("Allocated");
+
+        }else if(status.equals("0")){
+
+            holder.text_STATUS.setText("Active");
+        }
 
     }
 

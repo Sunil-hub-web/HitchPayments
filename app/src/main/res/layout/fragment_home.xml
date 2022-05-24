@@ -63,7 +63,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/text1"
+                            android:id="@+id/text_TodayActivation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -126,7 +126,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/text"
+                            android:id="@+id/text_LastDayActivation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"

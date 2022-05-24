@@ -5,6 +5,8 @@ pluginManagement {
         mavenCentral()
 
         maven { url 'https://jitpack.io' }
+
+        maven {url 'https://maven.cashfree.com/release'}
     }
 }
 dependencyResolutionManagement {
@@ -16,6 +18,8 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
 
         maven { url 'https://www.jitpack.io' }
+
+        maven {url 'https://maven.cashfree.com/release'}
     }
 }
 rootProject.name = "HitchPayments"

@@ -54,4 +54,17 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     implementation 'com.github.mohammadatif:Animatoo:master'
+
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
+    implementation 'com.cashfree.pg:api:1.0.5'
+
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.0'
+
+    implementation 'com.cashfree.pg:android-support-sdk:1.4.2.2'
+
+    implementation 'com.cashfree.pg:android-sdk:1.7.26'
+
+
 }

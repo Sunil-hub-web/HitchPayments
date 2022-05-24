@@ -178,7 +178,9 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize" />
+                    android:textSize="@dimen/edittextsize"
+                    android:text="India"
+                    android:focusable="false"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -199,6 +201,8 @@
                     android:inputType="text"
                     android:maxLength="10"
                     android:padding="@dimen/five"
+                    android:text="India"
+                    android:focusable="false"
                     android:textColor="@color/textcolor"
                     android:textSize="@dimen/edittextsize" />
 
@@ -242,7 +246,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_signin"
+                android:id="@+id/btn_VerifayCustomer"
                 style="@style/designButton"
                 android:layout_width="@dimen/two_hundred"
                 android:layout_height="wrap_content"

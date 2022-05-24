@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -40,14 +42,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import in.co.adapter.ClassTagSpinerAdapter;
 import in.co.hitchpayments.R;
+import in.co.modelclass.ClassoFtag_ModelClass;
 import in.co.url.AppUrl;
 import in.co.url.MyJsonArrayRequest;
+import in.co.url.SessionManager;
 import in.co.url.SharedPreferenceManager;
 
 public class TagActivationFragment extends Fragment {
@@ -62,6 +68,11 @@ public class TagActivationFragment extends Fragment {
     TextInputLayout editMobileNo1, editOTP;
     String currentTime = "",ORGREQID;
     SharedPreferenceManager sharedPreferenceManager;
+    SessionManager sessionManager;
+    Spinner spinner_SelectBarcode,spinner_SelectProduct,spinner_VehicleType;
+
+    ArrayList<ClassoFtag_ModelClass> barCode = new ArrayList<>();
+    ArrayList<ClassoFtag_ModelClass> product = new ArrayList<>();
 
     @Nullable
     @Override
@@ -89,6 +100,9 @@ public class TagActivationFragment extends Fragment {
         text_EmailId = view.findViewById(R.id.text_EmailId);
         edit_OTP = view.findViewById(R.id.edit_OTP);
         text_CustomerId = view.findViewById(R.id.text_CustomerId);
+        spinner_VehicleType = view.findViewById(R.id.spinner_VehicleType);
+        spinner_SelectProduct = view.findViewById(R.id.spinner_SelectProduct);
+        spinner_SelectBarcode = view.findViewById(R.id.spinner_SelectBarcode);
 
         editOTP.setVisibility(View.GONE);
 
@@ -100,7 +114,12 @@ public class TagActivationFragment extends Fragment {
         }
 
         sharedPreferenceManager = new SharedPreferenceManager(getContext());
+        sessionManager = new SessionManager(getContext());
 
+        String agentId = sessionManager.getSalesAgentId();
+
+        GetBarcode(agentId);
+        Getproduct(agentId);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -140,6 +159,12 @@ public class TagActivationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+               /* FragmentTransaction ft = getFragmentManager().beginTransaction();
+                CustomerDeatilsFragment customerDeatilsFragment = new CustomerDeatilsFragment();
+                ft.replace(R.id.nav_host_fragment, customerDeatilsFragment);
+                ft.addToBackStack(null);
+                ft.commit();
+*/
                 if (btn_Sendotp.getText().toString().trim().equals("Send Otp")) {
 
                     if(edit_MobileNo1.getText().toString().trim().equals("")){
@@ -447,6 +472,8 @@ public class TagActivationFragment extends Fragment {
 
         try {
 
+            jsonObject.put("AGENTID","230201");
+            jsonObject.put("CPID", "504");
             jsonObject.put("REQID", reqid);
             jsonObject.put("MOBILENUMBER", mobileNo);
             jsonObject.put("OTP", otp);
@@ -479,6 +506,10 @@ public class TagActivationFragment extends Fragment {
                     String status = jsonObject_response.getString("STATUS");
 
                     if(responseCode.equalsIgnoreCase("00")){
+
+                        ORGREQID = jsonObject_response.getString("ORGREQID");
+
+                        sharedPreferenceManager.setOrgreqId(ORGREQID);
 
                         Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
 
@@ -539,5 +570,183 @@ public class TagActivationFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsonObjectRequest);
     }
+
+    public void GetBarcode(String salesAgentId){
+
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Get Barcode Please Wait...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppUrl.getbarcode, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String status = jsonObject.getString("status");
+                    String error = jsonObject.getString("error");
+                    String messages = jsonObject.getString("messages");
+
+                    JSONObject jsonObject_messages = new JSONObject(messages);
+
+                    String responsecode = jsonObject_messages.getString("responsecode");
+                    String statusArray = jsonObject_messages.getString("status");
+
+                    if(responsecode.equals("00")){
+
+                        JSONArray jsonArray_status = new JSONArray(statusArray);
+
+                        for (int i=0;i<jsonArray_status.length();i++){
+
+                            JSONObject jsonObject_status = jsonArray_status.getJSONObject(i);
+
+                            String barcode = jsonObject_status.getString("barcode");
+
+                            if(barcode.equals("")){
+
+                            }else{
+
+                                ClassoFtag_ModelClass ftag_modelClass = new ClassoFtag_ModelClass(barcode);
+                                barCode.add(ftag_modelClass);
+                            }
+
+                        }
+
+                        ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(),R.layout.spinneritem,barCode);
+                        classTagSpinerAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
+                        spinner_SelectBarcode.setAdapter(classTagSpinerAdapter);
+                        spinner_SelectBarcode.setSelection(-1,true);
+                    }
+
+                }catch(Exception e){
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Log.d("responceVolley", "" + error);
+
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }){
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+                params.put("userid",salesAgentId);
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
+    public void Getproduct(String salesAgentId){
+
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Get Barcode Please Wait...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppUrl.getproduct, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String status = jsonObject.getString("status");
+                    String error = jsonObject.getString("error");
+                    String messages = jsonObject.getString("messages");
+
+                    JSONObject jsonObject_messages = new JSONObject(messages);
+
+                    String responsecode = jsonObject_messages.getString("responsecode");
+                    String statusArray = jsonObject_messages.getString("status");
+
+                    if(responsecode.equals("00")){
+
+                        JSONArray jsonArray_status = new JSONArray(statusArray);
+
+                        for (int i=0;i<jsonArray_status.length();i++){
+
+                            JSONObject jsonObject_status = jsonArray_status.getJSONObject(i);
+
+                            String prodctCode = jsonObject_status.getString("prodctCode");
+
+                            if(prodctCode.equals("")){
+
+                            }else{
+
+                                ClassoFtag_ModelClass ftag_modelClass = new ClassoFtag_ModelClass(prodctCode);
+                                product.add(ftag_modelClass);
+                            }
+
+                        }
+
+                        ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(),R.layout.spinneritem,product);
+                        classTagSpinerAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
+                        spinner_SelectProduct.setAdapter(classTagSpinerAdapter);
+                        spinner_SelectProduct.setSelection(-1,true);
+                    }
+
+                }catch(Exception e){
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Log.d("responceVolley", "" + error);
+
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }){
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+                params.put("userid",salesAgentId);
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
+
 
 }

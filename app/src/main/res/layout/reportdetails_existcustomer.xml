@@ -32,7 +32,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
+                    android:layout_weight="1"
                     android:text="CUSTOMER NAME"
                     android:textColor="@color/black"
                     android:textSize="@dimen/twelve">
@@ -40,6 +40,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_CUSTOMERNAME"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -60,7 +61,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
+                    android:layout_weight="1"
                     android:text="CUSTOMER ID"
                     android:textColor="@color/black"
                     android:textSize="@dimen/twelve">
@@ -68,6 +69,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_CUSTOMERID"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -89,35 +91,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
-                    android:text="PAN CARD NUMBER"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/twelve">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="AZOPM0057A"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
-
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/ten"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
                     android:text="MOBILE NUMBER"
                     android:textColor="@color/black"
                     android:textSize="@dimen/twelve">
@@ -125,6 +99,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_MOBILENUMBER"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -145,7 +120,36 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
+                    android:layout_weight="1"
+                    android:text="VEHICLE / CHASSIS NUMBER"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_CHASSISNUMBER"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="885765761"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="BAR CODE"
                     android:textColor="@color/black"
                     android:textSize="@dimen/twelve">
@@ -153,6 +157,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_BARCODE"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -164,7 +169,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
@@ -218,74 +223,18 @@
 
                 </TextView>
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
-                    android:text="PAYMENT AMOUNT"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/twelve">
-
-                </TextView>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Rs. 1.00"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
-
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/ten"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
-                    android:text="PAYMENT ID"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/twelve">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="885765761"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textsize">
-
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/ten"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
                     android:text="DATE OF ACTIVATION"
                     android:textColor="@color/black"
                     android:textSize="@dimen/twelve">
@@ -293,6 +242,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_DATEACTIVATION"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -313,7 +263,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
+                    android:layout_weight="1"
                     android:text="TIME OF ACTIVATION"
                     android:textColor="@color/black"
                     android:textSize="@dimen/twelve">
@@ -321,6 +271,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_TIMEACTIVATION"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -336,23 +287,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:id="@+id/lin_ViewBalance"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
-                    android:text="FASTAG STATUS"
+                    android:layout_weight="1"
+                    android:text="Action"
                     android:textColor="@color/black"
                     android:textSize="@dimen/twelve">
 
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_Balance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="230201"
+                    android:text="Rs. 1.00"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textsize">
 
@@ -360,6 +314,20 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/text_ViewBalance"
+                android:layout_width="@dimen/hundred"
+                android:layout_height="@dimen/thirty"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/five"
+                android:background="@drawable/bookingbtn_bg"
+                android:backgroundTint="@color/teal_200"
+                android:text="View Balance"
+                android:textColor="@color/white"
+                android:textSize="@dimen/ten"
+                android:textStyle="bold"></TextView>
 
         </LinearLayout>
 

@@ -47,7 +47,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_signin"
+                android:id="@+id/btn_MakePayment"
                 style="@style/designButton"
                 android:layout_width="0dp"
                 android:layout_weight="0.8"
@@ -66,18 +66,12 @@
         </LinearLayout>
 
 
-
-        <include layout="@layout/wallet"></include>
-
-        <include layout="@layout/wallet"></include>
-
-
-      <!--  <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/viewWalletRecycler">
 
-        </androidx.recyclerview.widget.RecyclerView>-->
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 

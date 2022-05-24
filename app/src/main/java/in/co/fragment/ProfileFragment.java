@@ -57,7 +57,6 @@ public class ProfileFragment extends Fragment {
         text_RelationshipNominee = view.findViewById(R.id.text_RelationshipNominee);
         text_ContactNumber = view.findViewById(R.id.text_ContactNumber);
         profile_image = view.findViewById(R.id.profile_image);
-
         text_RegistrationNumber.setText(sessionManager.getRegistrationNumber());
         text_UserName.setText(sessionManager.getUserName());
         text_PrimaryContact.setText(sessionManager.getPrimaryContact());
@@ -65,14 +64,30 @@ public class ProfileFragment extends Fragment {
         text_AadharNumber.setText(sessionManager.getAadharNumber());
         text_PANCardNumber.setText(sessionManager.getPANCardNumber());
         text_DrivingLicence.setText(sessionManager.getDrivingLicence());
-        text_KYCStatus.setText(sessionManager.getKYCStatus());
         text_BankName.setText(sessionManager.getBankName());
         text_IFSCCode.setText(sessionManager.getIFSCCode());
         text_AccountNumber.setText(sessionManager.getAccountNumber());
-        text_BankVerificationStatus.setText(sessionManager.getBankVerificationStatus());
         text_FullName.setText(sessionManager.getNomineeName());
         text_RelationshipNominee.setText(sessionManager.getRelationshipWith());
         text_ContactNumber.setText(sessionManager.getContactNumber());
+
+        if(sessionManager.getKYCStatus().equals("0")){
+
+            text_KYCStatus.setText("Pending ");
+
+        }else{
+
+            text_KYCStatus.setText("Verified");
+        }
+
+        if(sessionManager.getBankVerificationStatus().equals("0")){
+
+            text_BankVerificationStatus.setText("Pending ");
+
+        }else{
+
+            text_BankVerificationStatus.setText("Verified");
+        }
 
         String url = "https://kottakotabusinesses.com/public/adminasset/img/salesagent/profileimage/"+sessionManager.getProfile();
 
