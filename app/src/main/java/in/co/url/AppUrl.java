@@ -21,6 +21,9 @@ public class AppUrl {
     public static final String getbarcode = "https://kottakotabusinesses.com/getbarcode";
     public static final String getproduct = "https://kottakotabusinesses.com/getproduct";
     public static final String VerifyNSDLCustomer = "http://158.69.38.192:8090/VerifyNSDLNCIFDEDUP";
-
+    public static final String addcontactnumber = "https://kottakotabusinesses.com/addcontactnumber";
+    public static final String getStateCity = "http://158.69.38.192:8090/GetStateCity";
+    public static final String walletCreation = "http://158.69.38.192:8090/WalletCreation";
+    public static final String addVehicle = "http://158.69.38.192:8090/Addvehicle";
 
 }

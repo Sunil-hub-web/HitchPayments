@@ -98,6 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
+                android:id="@+id/editDateOfBirth"
                 android:hint="Enter Date Of Birth"
                 android:theme="@style/MyTextInputLayout_overlay"
                 app:boxStrokeColor="@color/red"
@@ -111,32 +112,24 @@
                     android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize" />
+                    android:textSize="@dimen/edittextsize"
+                    android:drawableRight="@drawable/calendar"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <Spinner
+                android:id="@+id/spinner_Gender"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/forty_five"
                 android:layout_margin="@dimen/ten"
-                android:hint="Enter Gender"
-                android:theme="@style/MyTextInputLayout_overlay"
-                app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red">
-
-                <EditText
-                    android:id="@+id/edit_Gender"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/fifty"
-                    android:inputType="text"
-                    android:maxLength="10"
-                    android:padding="@dimen/five"
-                    android:textColor="@color/textcolor"
-                    android:textSize="@dimen/edittextsize" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:background="@drawable/deshbord_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/two"
+                android:paddingRight="@dimen/two"
+                android:spinnerMode="dropdown"
+                android:text="Please Select Your Area"
+                android:textColor="#25297A"
+                android:textSize="@dimen/fifteen" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

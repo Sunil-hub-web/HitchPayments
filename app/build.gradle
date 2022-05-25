@@ -66,5 +66,7 @@ dependencies {
 
     implementation 'com.cashfree.pg:android-sdk:1.7.26'
 
+    implementation 'com.google.code.gson:gson:2.9.0'
+
 
 }

@@ -176,14 +176,16 @@
                app:cardCornerRadius="@dimen/five"
                app:cardElevation="@dimen/ten">
 
-               <LinearLayout
+               <include layout="@layout/fragment_addvehicle"></include>
+
+              <!-- <LinearLayout
                    android:id="@+id/lin_searchDetails"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:background="#FFFFFF"
                    android:elevation="@dimen/ten"
                    android:orientation="vertical"
-                   android:visibility="visible">
+                   android:visibility="gone">
 
                    <LinearLayout
                        android:layout_width="match_parent"
@@ -436,7 +438,7 @@
 
                    </com.google.android.material.button.MaterialButton>
 
-               </LinearLayout>
+               </LinearLayout>-->
 
            </androidx.cardview.widget.CardView>
 
