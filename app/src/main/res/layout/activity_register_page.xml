@@ -40,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/fifty"
                 android:inputType="text"
-                android:maxLength="10"
                 android:padding="@dimen/ten"
                 android:textColor="@color/blacktext"
                 android:textSize="@dimen/edittextsize" />
@@ -61,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/fifty"
                 android:inputType="number"
-                android:maxLength="10"
                 android:padding="@dimen/ten"
                 android:textColor="@color/blacktext"
                 android:textSize="@dimen/edittextsize" />
@@ -82,7 +80,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/fifty"
                 android:inputType="number"
-                android:maxLength="10"
                 android:padding="@dimen/ten"
                 android:textColor="@color/blacktext"
                 android:textSize="@dimen/edittextsize" />

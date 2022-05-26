@@ -545,7 +545,7 @@ public class AddVehicleFragment extends Fragment {
 
                     if (responseCode.equalsIgnoreCase("00")) {
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
 
                         JSONArray jsonArray_TAG = new JSONArray(TAG);
@@ -562,7 +562,7 @@ public class AddVehicleFragment extends Fragment {
 
                         if(RESULT.equals("230201")){
 
-                            Toast.makeText(getActivity(), RESULT, Toast.LENGTH_SHORT).show();
+                             Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                             String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                             String statues = sharedPreferenceManager.getStatusArray();
                             String agentid = sessionManager.getSalesAgentId();
@@ -572,12 +572,12 @@ public class AddVehicleFragment extends Fragment {
 
                         }else{
 
-                            Toast.makeText(getActivity(), RESULT, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                         }
 
                     } else {
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {

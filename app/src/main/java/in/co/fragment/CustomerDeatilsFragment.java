@@ -121,22 +121,22 @@ public class CustomerDeatilsFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 data = AddressProofName.getSelectedItem().toString();
-                //Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), data, Toast.LENGTH_LONG).show();
 
                 if (data.equals("voter id")) {
 
                     value = addressProofName1.get("voter id");
-                    Toast.makeText(getActivity(), value, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), value, Toast.LENGTH_LONG).show();
 
                 } else if (data.equals("Driving License")) {
 
                     value = addressProofName1.get("Driving License");
-                    Toast.makeText(getActivity(), value, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), value, Toast.LENGTH_LONG).show();
 
                 } else if (data.equals("Passport")) {
 
                     value = addressProofName1.get("Passport");
-                    Toast.makeText(getActivity(), value, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), value, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -152,17 +152,17 @@ public class CustomerDeatilsFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String data = AddressProofName.getSelectedItem().toString();
-                //Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), data, Toast.LENGTH_LONG).show();
 
                 if (data.equals("Male")) {
 
                     str_Gender = genderName1.get("Male");
-                    Toast.makeText(getActivity(), str_Gender, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), str_Gender, Toast.LENGTH_LONG).show();
 
                 } else if (data.equals("Female")) {
 
                     str_Gender = genderName1.get("Female");
-                    Toast.makeText(getActivity(), str_Gender, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), str_Gender, Toast.LENGTH_LONG).show();
 
                 }
 
@@ -180,27 +180,27 @@ public class CustomerDeatilsFragment extends Fragment {
 
                 if (edit_FirstName.getText().toString().trim().equals("")) {
 
-                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_LONG).show();
 
                 } else if (edit_LastName.getText().toString().trim().equals("")) {
 
-                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_LONG).show();
 
                 } else if (edit_PANCardNumber.getText().toString().trim().equals("")) {
 
-                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_LONG).show();
 
                 } else if (edit_DateOfBirth.getText().toString().trim().equals("")) {
 
-                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_LONG).show();
 
                 } else if (edit_Pincode.getText().toString().trim().equals("")) {
 
-                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_LONG).show();
 
                 } else if (edit_AddressProofNumber.getText().toString().trim().equals("")) {
 
-                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_LONG).show();
 
                 } else {
 
@@ -322,11 +322,11 @@ public class CustomerDeatilsFragment extends Fragment {
 
                         Updatetokenandcnr(TOKENNO, statusArray, CRN);
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
                     } else {
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -342,13 +342,13 @@ public class CustomerDeatilsFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -394,7 +394,7 @@ public class CustomerDeatilsFragment extends Fragment {
                     String statusArray = jsonObject_messages.getString("status");
 
                     if (responsecode.equals("00")) {
-                        Toast.makeText(getActivity(), "Coustomer Details Add", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Coustomer Details Add", Toast.LENGTH_LONG).show();
 
                         ORGREQID = sharedPreferenceManager.getOrgreqId();
                         mobileNO = sharedPreferenceManager.getMobileNo();
@@ -402,7 +402,7 @@ public class CustomerDeatilsFragment extends Fragment {
                         VerifyNSDLCustomer(currentTime, mobileNO, ORGREQID, str_FirstName, str_LastName, str_PANCardNumber, "1", str_DateOfBirth);
 
                     } else {
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -418,13 +418,13 @@ public class CustomerDeatilsFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -474,7 +474,7 @@ public class CustomerDeatilsFragment extends Fragment {
                     String statusArray = jsonObject_messages.getString("status");
 
                     if (responsecode.equals("00")) {
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
                         currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
 
@@ -485,7 +485,7 @@ public class CustomerDeatilsFragment extends Fragment {
                         GetStateCity(currentTime,pincode);
 
                     } else {
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -501,13 +501,13 @@ public class CustomerDeatilsFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -609,7 +609,7 @@ public class CustomerDeatilsFragment extends Fragment {
 
                     }else{
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -625,13 +625,13 @@ public class CustomerDeatilsFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -735,7 +735,7 @@ public class CustomerDeatilsFragment extends Fragment {
 
                     }else{
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                     }
 
                 }catch(JSONException e){
@@ -751,13 +751,13 @@ public class CustomerDeatilsFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -833,7 +833,7 @@ public class CustomerDeatilsFragment extends Fragment {
 
                     }else if(responseCode.equalsIgnoreCase("01")){
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
                     }
 
@@ -852,13 +852,13 @@ public class CustomerDeatilsFragment extends Fragment {
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -906,7 +906,7 @@ public class CustomerDeatilsFragment extends Fragment {
                     String statusArray = jsonObject_messages.getString("status");
 
                     if (responsecode.equals("00")) {
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
                         currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
 
@@ -918,7 +918,7 @@ public class CustomerDeatilsFragment extends Fragment {
 
 
                     } else {
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -934,13 +934,13 @@ public class CustomerDeatilsFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }

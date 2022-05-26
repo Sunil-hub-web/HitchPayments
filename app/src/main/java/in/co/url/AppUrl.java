@@ -25,5 +25,6 @@ public class AppUrl {
     public static final String getStateCity = "http://158.69.38.192:8090/GetStateCity";
     public static final String walletCreation = "http://158.69.38.192:8090/WalletCreation";
     public static final String addVehicle = "http://158.69.38.192:8090/Addvehicle";
+    public static final String addwalletbalance = "https://kottakotabusinesses.com/addwalletbalance";
 
 }

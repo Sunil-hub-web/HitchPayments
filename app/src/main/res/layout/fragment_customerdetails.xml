@@ -42,7 +42,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
                     android:textSize="@dimen/edittextsize" />
@@ -64,7 +63,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
                     android:textSize="@dimen/edittextsize" />
@@ -86,7 +84,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
                     android:textSize="@dimen/edittextsize" />
@@ -109,7 +106,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
                     android:textSize="@dimen/edittextsize"
@@ -146,7 +142,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
                     android:textSize="@dimen/edittextsize" />
@@ -231,7 +226,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/five"
                     android:textColor="@color/textcolor"
                     android:textSize="@dimen/edittextsize" />
