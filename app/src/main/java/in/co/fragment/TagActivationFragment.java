@@ -126,7 +126,7 @@ public class TagActivationFragment extends Fragment {
         text_ExistingCustomer = view.findViewById(R.id.text_ExistingCustomer);
         lin_SearchStatus = view.findViewById(R.id.lin_SearchStatus);
         lin_Sendotp = view.findViewById(R.id.lin_Sendotp);
-        lin_searchDetails = view.findViewById(R.id.lin_searchDetails);
+       // lin_searchDetails = view.findViewById(R.id.lin_searchDetails);
         edit_MobileNo = view.findViewById(R.id.edit_MobileNo);
         edit_MobileNo1 = view.findViewById(R.id.edit_MobileNo1);
         btn_SearchStatues = view.findViewById(R.id.btn_SearchStatues);
@@ -203,7 +203,7 @@ public class TagActivationFragment extends Fragment {
                     spinner_Type.setSelection(-1, true);
 
                     str_classbar = classBarcode1.get("VC4");
-                    //Toast.makeText(getActivity(), value, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), value, Toast.LENGTH_LONG).show();
 
 
                 } else if (clssBar.equalsIgnoreCase("VC20")) {
@@ -279,7 +279,7 @@ public class TagActivationFragment extends Fragment {
 
                 if (selectedId == -1) {
 
-                    Toast.makeText(getActivity(), "Nothing selected", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Nothing selected", Toast.LENGTH_LONG).show();
                 } else {
 
                     String str_radioButton = genderradioButton.getText().toString();
@@ -288,14 +288,14 @@ public class TagActivationFragment extends Fragment {
 
                         lin_Sendotp.setVisibility(View.VISIBLE);
                         lin_SearchStatus.setVisibility(View.GONE);
-                        lin_searchDetails.setVisibility(View.GONE);
+                       // lin_searchDetails.setVisibility(View.GONE);
                         cardView12.setVisibility(View.GONE);
 
                     } else if (str_radioButton.equals("Existing Customer")) {
 
                         lin_SearchStatus.setVisibility(View.VISIBLE);
                         lin_Sendotp.setVisibility(View.GONE);
-                        lin_searchDetails.setVisibility(View.GONE);
+                        //lin_searchDetails.setVisibility(View.GONE);
                         cardView12.setVisibility(View.GONE);
 
                     }
@@ -395,23 +395,23 @@ public class TagActivationFragment extends Fragment {
 
                 if(edit_CustomerId.getText().toString().trim().equals("")){
 
-                    Toast.makeText(getActivity(), " Fill The CustomerId Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), " Fill The CustomerId Details", Toast.LENGTH_LONG).show();
 
                 }else if(edit_CustomerName.getText().toString().trim().equals("")){
 
-                    Toast.makeText(getActivity(), "Fill The CustomerName Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The CustomerName Details", Toast.LENGTH_LONG).show();
 
                 }else if(edit_ContactNumber.getText().toString().trim().equals("")){
 
-                    Toast.makeText(getActivity(), "Fill The ContactNumber Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The ContactNumber Details", Toast.LENGTH_LONG).show();
 
                 }else if(edit_EmailId.getText().toString().trim().equals("")){
 
-                    Toast.makeText(getActivity(), "Fill The EmailId Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The EmailId Details", Toast.LENGTH_LONG).show();
 
                 }else if(edit_VehicleNumber.getText().toString().trim().equals("")){
 
-                    Toast.makeText(getActivity(), "Fill The VehicleNumber Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The VehicleNumber Details", Toast.LENGTH_LONG).show();
 
                 }else{
 
@@ -463,11 +463,11 @@ public class TagActivationFragment extends Fragment {
 
                         e.printStackTrace();
 
-                        Toast.makeText(getContext(), "Not Found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Not Found", Toast.LENGTH_LONG).show();
                     }
                 }else{
 
-                    Toast.makeText(getContext(), "Data Not Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Data Not Found", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -517,7 +517,7 @@ public class TagActivationFragment extends Fragment {
 
                     if(responseCode.equalsIgnoreCase("00")){
 
-                        lin_searchDetails.setVisibility(View.VISIBLE);
+                       // lin_searchDetails.setVisibility(View.VISIBLE);
                         cardView12.setVisibility(View.VISIBLE);
 
                         String CUSTOMERID = jsonObject_response.getString("CUSTOMERID");
@@ -533,7 +533,7 @@ public class TagActivationFragment extends Fragment {
 
                     }else if(responseCode.equalsIgnoreCase("01")){
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
                     }
 
@@ -552,13 +552,13 @@ public class TagActivationFragment extends Fragment {
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -573,8 +573,6 @@ public class TagActivationFragment extends Fragment {
                 return params;
             }
         };
-
-
 
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
@@ -624,7 +622,7 @@ public class TagActivationFragment extends Fragment {
 
                     if(responseCode.equalsIgnoreCase("00")){
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
                         String RESDTSTAMP = jsonObject_response.getString("RESDTSTAMP");
                         String REQID = jsonObject_response.getString("REQID");
@@ -640,7 +638,7 @@ public class TagActivationFragment extends Fragment {
 
                     }else{
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
                     }
 
@@ -658,13 +656,13 @@ public class TagActivationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -734,7 +732,7 @@ public class TagActivationFragment extends Fragment {
 
                         sharedPreferenceManager.setOrgreqId(ORGREQID);
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
                         editOTP.setVisibility(View.VISIBLE);
                         editMobileNo1.setVisibility(View.GONE);
@@ -753,7 +751,7 @@ public class TagActivationFragment extends Fragment {
 
                     }else{
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -770,13 +768,13 @@ public class TagActivationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -859,13 +857,13 @@ public class TagActivationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -947,13 +945,13 @@ public class TagActivationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -998,7 +996,7 @@ public class TagActivationFragment extends Fragment {
                     String statusArray = jsonObject_messages.getString("status");
 
                     if(responsecode.equals("00")){
-                        Toast.makeText(getActivity(), "Mobile No Add", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Mobile No Add", Toast.LENGTH_LONG).show();
 
                         sharedPreferenceManager.setStatusArray(statusArray);
 
@@ -1006,7 +1004,7 @@ public class TagActivationFragment extends Fragment {
                         UpdateORGREQID(ORGREQID,statusArray);
 
                     }else{
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
                     }
 
                 }catch(JSONException e){
@@ -1022,13 +1020,13 @@ public class TagActivationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -1072,9 +1070,9 @@ public class TagActivationFragment extends Fragment {
                     String statusArray = jsonObject_messages.getString("status");
 
                     if(responsecode.equals("00")){
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
                     }else{
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
                     }
 
                 }catch(JSONException e){
@@ -1090,13 +1088,13 @@ public class TagActivationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -1158,7 +1156,7 @@ public class TagActivationFragment extends Fragment {
 
                     if (responsecode.equals("00")) {
 
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
                         String imgdata = jsonObject_messages.getString("imgdata");
 
@@ -1197,14 +1195,14 @@ public class TagActivationFragment extends Fragment {
 
                         jsonarray.put(params);
                         Log.d("Ranjeeet",jsonarray.toString());
-                        //Toast.makeText(getActivity(), jsonarray.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), jsonarray.toString(), Toast.LENGTH_LONG).show();
 
                         addVehicle(currentTime,mobile,CustomerID,jsonarray);
 
 
                     } else {
 
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -1219,13 +1217,13 @@ public class TagActivationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
 
@@ -1309,7 +1307,7 @@ public class TagActivationFragment extends Fragment {
 
                     if (responseCode.equalsIgnoreCase("00")) {
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
 
                         JSONArray jsonArray_TAG = new JSONArray(TAG);
@@ -1326,7 +1324,7 @@ public class TagActivationFragment extends Fragment {
 
                         if(RESULT.equals("230201")){
 
-                            Toast.makeText(getActivity(), RESULT, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), RESULT, Toast.LENGTH_LONG).show();
                             String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                             String statues = sharedPreferenceManager.getStatusArray();
                             String agentid = sessionManager.getSalesAgentId();
@@ -1336,12 +1334,12 @@ public class TagActivationFragment extends Fragment {
 
                         }else{
 
-                            Toast.makeText(getActivity(), RESULT, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), RESULT, Toast.LENGTH_LONG).show();
                         }
 
                     } else {
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -1358,13 +1356,13 @@ public class TagActivationFragment extends Fragment {
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -1412,10 +1410,10 @@ public class TagActivationFragment extends Fragment {
 
                     if (responsecode.equals("00")) {
 
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
                     } else {
-                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -1431,13 +1429,13 @@ public class TagActivationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }

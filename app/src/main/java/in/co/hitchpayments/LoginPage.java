@@ -85,7 +85,7 @@ public class LoginPage extends AppCompatActivity {
 
                     if(edit_UserId.getText().toString().trim().equals("")){
 
-                        Toast.makeText(LoginPage.this, "Fill The User Id", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginPage.this, "Fill The User Id", Toast.LENGTH_LONG).show();
                     }else{
 
                         String userid = edit_UserId.getText().toString().trim();
@@ -99,7 +99,7 @@ public class LoginPage extends AppCompatActivity {
 
                     if(edit_EnterOTP.getText().toString().trim().equals("")){
 
-                        Toast.makeText(LoginPage.this, "Fill OTP", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginPage.this, "Fill OTP", Toast.LENGTH_LONG).show();
                     }else{
 
                         String userid = sessionManager.getUserId();
@@ -158,7 +158,7 @@ public class LoginPage extends AppCompatActivity {
 
                     }else{
 
-                        Toast.makeText(LoginPage.this, "User Id is Invalide", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginPage.this, "User Id is Invalide", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -174,13 +174,13 @@ public class LoginPage extends AppCompatActivity {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(LoginPage.this.getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPage.this.getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(LoginPage.this, "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPage.this, "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -233,13 +233,13 @@ public class LoginPage extends AppCompatActivity {
 
                         if(responsecode.equals("01")){
 
-                            Toast.makeText(LoginPage.this, status1, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginPage.this, status1, Toast.LENGTH_LONG).show();
 
                         }else{
 
                             JSONObject jsonObject_status = new JSONObject(status1);
 
-                            //Toast.makeText(LoginPage.this, status1, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LoginPage.this, status1, Toast.LENGTH_LONG).show();
 
                             String salesagentId = jsonObject_status.getString("salesagentId");
                             String bankdetailsid = jsonObject_status.getString("bankdetailsid");
@@ -301,7 +301,7 @@ public class LoginPage extends AppCompatActivity {
 
                     }else{
 
-                        Toast.makeText(LoginPage.this, "incorract Otp", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginPage.this, "incorract Otp", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -318,13 +318,13 @@ public class LoginPage extends AppCompatActivity {
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(LoginPage.this.getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPage.this.getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(LoginPage.this, "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPage.this, "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }

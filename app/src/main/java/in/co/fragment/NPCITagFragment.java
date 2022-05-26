@@ -80,7 +80,7 @@ public class NPCITagFragment extends Fragment {
 
                 if(edit_VehicleNo.getText().toString().trim().equals("")){
 
-                    Toast.makeText(getActivity(), "Fill the details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill the details", Toast.LENGTH_LONG).show();
 
                 }else{
 
@@ -141,7 +141,7 @@ public class NPCITagFragment extends Fragment {
 
                         cardView.setVisibility(View.VISIBLE);
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
 
                         String ERRORCODE = jsonObject_response.getString("ERRORCODE");
                         String ERRORDESC = jsonObject_response.getString("ERRORDESC");
@@ -179,7 +179,7 @@ public class NPCITagFragment extends Fragment {
 
                     }else{
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                     }
 
                 }catch(Exception e){
@@ -194,13 +194,13 @@ public class NPCITagFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
 

@@ -35,7 +35,7 @@
                 android:theme="@style/MyTextInputLayout_overlay">
 
                 <EditText
-                    android:id="@+id/edit_MobileNo"
+                    android:id="@+id/edit_Amount"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/forty_five"
                     android:inputType="number"

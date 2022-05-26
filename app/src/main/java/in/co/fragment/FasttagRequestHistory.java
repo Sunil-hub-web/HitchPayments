@@ -79,7 +79,7 @@ public class FasttagRequestHistory extends Fragment {
 
         name_text.setText("Request FastTag");
 
-        //Toast.makeText(getActivity(), agentId, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), agentId, Toast.LENGTH_LONG).show();
 
         spinner_FastagClass.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -99,7 +99,7 @@ public class FasttagRequestHistory extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                Toast.makeText(getContext(), "Select", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Select", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -113,7 +113,7 @@ public class FasttagRequestHistory extends Fragment {
 
                 if(edit_NumberOfFastag.getText().toString().trim().equals("")){
 
-                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill The Details", Toast.LENGTH_LONG).show();
                 }else{
 
                     String noofFastTag = edit_NumberOfFastag.getText().toString().trim();
@@ -191,13 +191,13 @@ public class FasttagRequestHistory extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
 
@@ -282,12 +282,12 @@ public class FasttagRequestHistory extends Fragment {
 
                         }else{
 
-                            Toast.makeText(getActivity(), "No Data Avilable", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "No Data Avilable", Toast.LENGTH_LONG).show();
                         }
 
                     }else{
 
-                        Toast.makeText(getActivity(), "User Id is Invalide", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "User Id is Invalide", Toast.LENGTH_LONG).show();
                     }
 
                 }catch (JSONException e) {
@@ -302,13 +302,13 @@ public class FasttagRequestHistory extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -353,7 +353,7 @@ public class FasttagRequestHistory extends Fragment {
 
                     if(responsecode.equals("00")){
 
-                        Toast.makeText(getActivity(), status1, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), status1, Toast.LENGTH_LONG).show();
                     }
 
                 }catch(JSONException e){
@@ -368,13 +368,13 @@ public class FasttagRequestHistory extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
             }

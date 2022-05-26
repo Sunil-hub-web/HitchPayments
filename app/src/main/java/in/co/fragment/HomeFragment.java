@@ -183,7 +183,7 @@ public class HomeFragment extends Fragment {
 
                     }else{
 
-                        Toast.makeText(getActivity(), "Invalide User Id", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Invalide User Id", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -198,13 +198,13 @@ public class HomeFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
 
@@ -248,7 +248,7 @@ public class HomeFragment extends Fragment {
 
                     }else{
 
-                        Toast.makeText(getActivity(), "Invalide User Id", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Invalide User Id", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -263,13 +263,13 @@ public class HomeFragment extends Fragment {
                 progressDialog.dismiss();
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
 
-                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
 
                 } else {
 
                     Log.d("responceVolley", "" + error);
 
-                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
 
 
