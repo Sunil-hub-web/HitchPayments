@@ -211,6 +211,9 @@ public class CustomerDeatilsFragment extends Fragment {
                     str_AddressProofNumber = edit_AddressProofNumber.getText().toString().trim();
                     String tagId = sharedPreferenceManager.getStatusArray();
 
+                    str_PANCardNumber = str_PANCardNumber.toUpperCase();
+                    str_AddressProofNumber = str_AddressProofNumber.toUpperCase();
+
                     AddCustomeDetails(str_PANCardNumber, tagId, str_FirstName, str_LastName, str_DateOfBirth, str_AddressProofNumber, str_AddressProofNumber);
 
                 }
@@ -408,6 +411,8 @@ public class CustomerDeatilsFragment extends Fragment {
                         str_AddressProofNumber = edit_AddressProofNumber.getText().toString().trim();
 
                         str_PANCardNumber = str_PANCardNumber.toUpperCase();
+                        str_AddressProofNumber = str_AddressProofNumber.toUpperCase();
+
                         String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
                         VerifyNSDLCustomer(currentTime, mobileNO, ORGREQID, str_FirstName, str_LastName, str_PANCardNumber, "1", str_DateOfBirth);
@@ -619,6 +624,8 @@ public class CustomerDeatilsFragment extends Fragment {
 
                         String customerName = str_FirstName+" "+str_LastName;
 
+                        str_PANCardNumber = str_PANCardNumber.toUpperCase();
+                        str_AddressProofNumber = str_AddressProofNumber.toUpperCase();
 
 
                         String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());

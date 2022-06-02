@@ -328,7 +328,7 @@ public class AddVehicleFragment extends Fragment {
 
         agentId = sessionManager.getSalesAgentId();
 
-        GetBarcode(agentId);
+        //GetBarcode(agentId);
         Getproduct(agentId);
 
         try {
@@ -362,7 +362,7 @@ public class AddVehicleFragment extends Fragment {
         return view;
     }
 
-    public void GetBarcode(String salesAgentId) {
+   /* public void GetBarcode(String salesAgentId) {
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Get Barcode Please Wait...");
@@ -408,10 +408,10 @@ public class AddVehicleFragment extends Fragment {
 
                         }
 
-                        /*ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(), R.layout.spinneritem, barCode);
+                        *//*ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(), R.layout.spinneritem, barCode);
                         classTagSpinerAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
                         autotext_SelectBarcode.setAdapter(classTagSpinerAdapter);
-                        autotext_SelectBarcode.setThreshold(1);*/
+                        autotext_SelectBarcode.setThreshold(1);*//*
 
                         ArrayAdapter<String> autoTextBarCode = new ArrayAdapter<String>(getActivity(), R.layout.spinneritem, str_barCode);
                         autotext_SelectBarcode.setAdapter(autoTextBarCode);
@@ -455,7 +455,7 @@ public class AddVehicleFragment extends Fragment {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
-    }
+    }*/
 
     public void Getproduct(String salesAgentId) {
 
