@@ -72,7 +72,7 @@ public class NPCITagFragment extends Fragment {
         cardView = view.findViewById(R.id.cardView);
         name_text.setText("NPCI Tag");
 
-        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
         btn_SearchStatues.setOnClickListener(new View.OnClickListener() {
             @Override

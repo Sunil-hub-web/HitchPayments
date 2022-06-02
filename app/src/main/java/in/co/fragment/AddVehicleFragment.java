@@ -9,12 +9,15 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,6 +29,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
@@ -65,7 +69,8 @@ import in.co.url.VolleyMultipartRequest;
 
 public class AddVehicleFragment extends Fragment {
 
-    Spinner spinner_SelectBarcode, spinner_SelectProduct, spinner_ClassBarcode, spinner_Type, spinner_VehicleType;
+    Spinner spinner_SelectProduct, spinner_ClassBarcode, spinner_Type, spinner_VehicleType;
+    AutoCompleteTextView autotext_SelectBarcode;
 
     String[] classBarcode = {"-Class Of Barcode-", "VC4", "VC20"};
     HashMap<String, String> classBarcode1 = new HashMap<String, String>();
@@ -82,6 +87,7 @@ public class AddVehicleFragment extends Fragment {
     String clssBar, agentId, str_classbar, vechtype, vctype, str_vechtype, str_vctype;
 
     ArrayList<ClassoFtag_ModelClass> barCode = new ArrayList<>();
+    ArrayList<String> str_barCode = new ArrayList<>();
     ArrayList<ClassoFtag_ModelClass> product = new ArrayList<>();
 
     SessionManager sessionManager;
@@ -111,7 +117,7 @@ public class AddVehicleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_addvehicle, container, false);
 
         spinner_VehicleType = view.findViewById(R.id.spinner_VehicleType);
-        spinner_SelectBarcode = view.findViewById(R.id.spinner_SelectBarcode);
+        autotext_SelectBarcode = view.findViewById(R.id.autotext_SelectBarcode);
         spinner_SelectProduct = view.findViewById(R.id.spinner_SelectProduct);
         spinner_ClassBarcode = view.findViewById(R.id.spinner_ClassBarcode);
         spinner_Type = view.findViewById(R.id.spinner_Type);
@@ -149,6 +155,11 @@ public class AddVehicleFragment extends Fragment {
         VehicleTypeAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
         spinner_VehicleType.setAdapter(VehicleTypeAdapter);
         spinner_VehicleType.setSelection(-1, true);
+
+        ArrayAdapter Typeadapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, vc4Type);
+        Typeadapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
+        spinner_Type.setAdapter(Typeadapter);
+        spinner_Type.setSelection(-1, true);
 
         spinner_ClassBarcode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -257,7 +268,7 @@ public class AddVehicleFragment extends Fragment {
 
                 }else{
 
-                    String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                    String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
 
                     str_CustomerId = edit_CustomerId.getText().toString().trim();
@@ -266,7 +277,7 @@ public class AddVehicleFragment extends Fragment {
                     str_EmailId = edit_EmailId.getText().toString().trim();
                     str_FastagClass = edit_FastagClass.getText().toString().trim();
                     str_VehicleNumber = edit_VehicleNumber.getText().toString().trim();
-                    str_SelectBarcode = spinner_SelectBarcode.getSelectedItem().toString();
+                    str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
                     str_SelectProduct = spinner_SelectProduct.getSelectedItem().toString();
 
                     String tagid = sharedPreferenceManager.getStatusArray();
@@ -320,6 +331,34 @@ public class AddVehicleFragment extends Fragment {
         GetBarcode(agentId);
         Getproduct(agentId);
 
+        try {
+
+            String mobileNo = sharedPreferenceManager.getMobileNo();
+            long lon_MobileNO = Long.valueOf(mobileNo);
+            VerifyCustomer("230201","504",lon_MobileNO);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        autotext_SelectBarcode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         return view;
     }
 
@@ -363,14 +402,21 @@ public class AddVehicleFragment extends Fragment {
 
                                 ClassoFtag_ModelClass ftag_modelClass = new ClassoFtag_ModelClass(barcode);
                                 barCode.add(ftag_modelClass);
+
+                                str_barCode.add(barcode);
                             }
 
                         }
 
-                        ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(), R.layout.spinneritem, barCode);
+                        /*ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(), R.layout.spinneritem, barCode);
                         classTagSpinerAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
-                        spinner_SelectBarcode.setAdapter(classTagSpinerAdapter);
-                        spinner_SelectBarcode.setSelection(-1, true);
+                        autotext_SelectBarcode.setAdapter(classTagSpinerAdapter);
+                        autotext_SelectBarcode.setThreshold(1);*/
+
+                        ArrayAdapter<String> autoTextBarCode = new ArrayAdapter<String>(getActivity(), R.layout.spinneritem, str_barCode);
+                        autotext_SelectBarcode.setAdapter(autoTextBarCode);
+                        autotext_SelectBarcode.setThreshold(1);//will start working from first character
+                        autotext_SelectBarcode.setTextColor(ContextCompat.getColor(getActivity(), R.color.danger));
                     }
 
                 } catch (Exception e) {
@@ -563,10 +609,10 @@ public class AddVehicleFragment extends Fragment {
                         if(RESULT.equals("230201")){
 
                              Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
-                            String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                            String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
                             String statues = sharedPreferenceManager.getStatusArray();
                             String agentid = sessionManager.getSalesAgentId();
-                            str_SelectBarcode = spinner_SelectBarcode.getSelectedItem().toString();
+                            str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
 
                             Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00",currentTime);
 
@@ -674,7 +720,7 @@ public class AddVehicleFragment extends Fragment {
                         String tagid = sharedPreferenceManager.getStatusArray();
                         String customerid = sharedPreferenceManager.getCUSTOMERID();
                         String agentType = sharedPreferenceManager.getAGENTTYPE();
-                        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
                         JSONArray jsonarray =  new JSONArray();
                         JSONObject params = new JSONObject();
@@ -799,6 +845,15 @@ public class AddVehicleFragment extends Fragment {
 
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
 
+                        edit_CustomerId.setText("");
+                      edit_CustomerName.setText("");
+                        edit_ContactNumber.setText("");
+                        edit_EmailId.setText("");
+                      edit_FastagClass.setText("");
+                       edit_VehicleNumber.setText("");
+                       autotext_SelectBarcode.setText("");
+
+
                     } else {
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_SHORT).show();
                     }
@@ -844,6 +899,109 @@ public class AddVehicleFragment extends Fragment {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+    }
+
+    public void VerifyCustomer(String agentId, String cpid, long mobileNo) throws JSONException {
+
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Customer Verify Please Wait...");
+        progressDialog.show();
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+
+            jsonObject.put("AGENTID", agentId);
+            jsonObject.put("CPID", cpid);
+            jsonObject.put("MOBILENUMBER", mobileNo);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        MyJsonArrayRequest jsonObjectRequest = new MyJsonArrayRequest(Request.Method.POST, AppUrl.verifayCustomer, jsonObject, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                progressDialog.dismiss();
+
+                Log.d("sunilresponse", response.toString());
+
+                try {
+
+                    String responsearray = response.toString();
+
+                    JSONArray jsonArray = new JSONArray(responsearray);
+
+                    JSONObject jsonObject_response = jsonArray.getJSONObject(0);
+
+                    String responseCode = jsonObject_response.getString("RESPONSECODE");
+                    String status = jsonObject_response.getString("STATUS");
+
+                    if(responseCode.equalsIgnoreCase("00")){
+
+                        // lin_searchDetails.setVisibility(View.VISIBLE);
+                        //cardView12.setVisibility(View.VISIBLE);
+
+                        String CUSTOMERID = jsonObject_response.getString("CUSTOMERID");
+                        String MOBILENUMBER = jsonObject_response.getString("MOBILENUMBER");
+                        String CUSTOMERNAME = jsonObject_response.getString("CUSTOMERNAME");
+                        String AGENTTYPE = jsonObject_response.getString("AGENTTYPE");
+                        String EMAILID = jsonObject_response.getString("EMAILID");
+
+                        edit_CustomerId.setText(CUSTOMERID);
+                        edit_CustomerName.setText(CUSTOMERNAME);
+                        edit_ContactNumber.setText(MOBILENUMBER);
+                        edit_EmailId.setText(EMAILID);
+
+                    }else if(responseCode.equalsIgnoreCase("01")){
+
+                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                    Log.d("errorresponse", e.toString());
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    Log.d("responceVolley", "" + error);
+
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("Content-Type", "application/json");
+                params.put("Accept", "application/json");
+
+                return params;
+            }
+        };
+
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(jsonObjectRequest);
     }
 
 }

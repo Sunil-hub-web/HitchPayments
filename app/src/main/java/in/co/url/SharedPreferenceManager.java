@@ -29,7 +29,7 @@ public class SharedPreferenceManager {
     private static final String IS_STATEID = "STATEID";
     private static final String IS_COUNTRYNAME = "COUNTRYNAME";
     private static final String IS_REGIONID = "REGIONID";
-    private static final String IS_REGIONNAME = "CUSTOMERSUBTYPE";
+    private static final String IS_REGIONNAME = "REGION_NAME";
     private static final String IS_CUSTOMERID = "CUSTOMERID";
     private static final String IS_AGENTTYPE = "AGENTTYPE";
 
@@ -160,9 +160,9 @@ public class SharedPreferenceManager {
         return sharedPreferences.getString(IS_ORGREQID,"DEFAULT");
     }
 
-    public void setCUSTOMERSUBTYPE(String id){
+    public void setCUSTOMERSUBTYPE(String CUSTOMERSUBTYPE){
 
-        editor.putString(IS_CUSTOMERSUBTYPE,id);
+        editor.putString(IS_CUSTOMERSUBTYPE,CUSTOMERSUBTYPE);
         editor.commit();
 
     }

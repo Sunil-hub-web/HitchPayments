@@ -102,9 +102,8 @@ public class CustomerDeatilsFragment extends Fragment {
         AddressProofName.setAdapter(proofName);
         AddressProofName.setSelection(-1, true);
 
-        genderName1.put("Male", "1");
-        genderName1.put("Female", "2");
-
+        genderName1.put("Male","1");
+        genderName1.put("Female","2");
 
         ArrayAdapter genName = new ArrayAdapter(getActivity(), R.layout.spinneritem, genderName);
         proofName.setDropDownViewResource(R.layout.spinnerdropdownitem);
@@ -114,7 +113,7 @@ public class CustomerDeatilsFragment extends Fragment {
         statusArray = sharedPreferenceManager.getStatusArray();
         agentId = sessionManager.getSalesAgentId();
 
-        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
         AddressProofName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -151,7 +150,7 @@ public class CustomerDeatilsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                String data = AddressProofName.getSelectedItem().toString();
+                String data = spinner_Gender.getSelectedItem().toString();
                 //Toast.makeText(getActivity(), data, Toast.LENGTH_LONG).show();
 
                 if (data.equals("Male")) {
@@ -212,7 +211,7 @@ public class CustomerDeatilsFragment extends Fragment {
                     str_AddressProofNumber = edit_AddressProofNumber.getText().toString().trim();
                     String tagId = sharedPreferenceManager.getStatusArray();
 
-                    AddCustomeDetails(str_PANCardNumber, tagId, str_FirstName, str_LastName, str_DateOfBirth, data, value);
+                    AddCustomeDetails(str_PANCardNumber, tagId, str_FirstName, str_LastName, str_DateOfBirth, str_AddressProofNumber, str_AddressProofNumber);
 
                 }
 
@@ -229,31 +228,33 @@ public class CustomerDeatilsFragment extends Fragment {
         date = new SimpleDateFormat("dd/mm/yyyy", Locale.getDefault()).format(new Date());
         time = new SimpleDateFormat("hh:mm aa", Locale.getDefault()).format(new Date());
 
-        editDateOfBirth.setOnClickListener(new View.OnClickListener() {
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                month = month+1;
+                String date = year+"/"+month+"/"+day;
+                //String date = year+"-"+month+"-"+day;
+                edit_DateOfBirth.setText(date);
+
+            }
+        };
+
+        edit_DateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        getActivity(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        month = month + 1;
-                        String date = year + "/" + month + "/" + day;
-                        //String date = year+"-"+month+"-"+day;
-                        edit_DateOfBirth.setText(date);
-                    }
-                }, year, month, day);
-
-                //display previous selected date
-                datePickerDialog.updateDate(year, month, day);
-
-                //disiable past date
-                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-
-                datePickerDialog.show();
+                showCalender1();
             }
         });
+
+       /* editDateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showCalender1();
+            }
+        });*/
 
         return view;
     }
@@ -399,6 +400,16 @@ public class CustomerDeatilsFragment extends Fragment {
                         ORGREQID = sharedPreferenceManager.getOrgreqId();
                         mobileNO = sharedPreferenceManager.getMobileNo();
 
+                        str_FirstName = edit_FirstName.getText().toString().trim();
+                        str_LastName = edit_LastName.getText().toString().trim();
+                        str_PANCardNumber = edit_PANCardNumber.getText().toString().trim();
+                        str_DateOfBirth = edit_DateOfBirth.getText().toString().trim();
+                        str_Pincode = edit_Pincode.getText().toString().trim();
+                        str_AddressProofNumber = edit_AddressProofNumber.getText().toString().trim();
+
+                        str_PANCardNumber = str_PANCardNumber.toUpperCase();
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+
                         VerifyNSDLCustomer(currentTime, mobileNO, ORGREQID, str_FirstName, str_LastName, str_PANCardNumber, "1", str_DateOfBirth);
 
                     } else {
@@ -474,9 +485,10 @@ public class CustomerDeatilsFragment extends Fragment {
                     String statusArray = jsonObject_messages.getString("status");
 
                     if (responsecode.equals("00")) {
+
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
-                        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
                         String pincode = edit_Pincode.getText().toString().trim();
 
@@ -592,6 +604,11 @@ public class CustomerDeatilsFragment extends Fragment {
                         String CrnNumber = sharedPreferenceManager.getCRN();
                         String mobileNO = sharedPreferenceManager.getMobileNo();
 
+                        if(CrnNumber.equals("null")){
+
+                            CrnNumber = "";
+                        }
+
                         str_FirstName = edit_FirstName.getText().toString().trim();
                         str_LastName = edit_LastName.getText().toString().trim();
                         str_PANCardNumber = edit_PANCardNumber.getText().toString().trim();
@@ -600,12 +617,21 @@ public class CustomerDeatilsFragment extends Fragment {
                         str_AddressProofNumber = edit_AddressProofNumber.getText().toString().trim();
                         String tagId = sharedPreferenceManager.getStatusArray();
 
-                        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                        String customerName = str_FirstName+" "+str_LastName;
 
-                        WalletCreation(currentTime,tokenNo,orgreqid,"1",subtype,CrnNumber,mobileNO,
-                                str_PANCardNumber,str_FirstName,str_LastName,str_DateOfBirth,str_Gender,"India","India",
-                                "India",str_Pincode,REGIONID,STATEID,CITYID,REGIONNAME,STATENAME,CITYNAME,data,str_AddressProofNumber
-                                );
+
+
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+                        Log.d("Ranjeet",currentTime+"orgreqid");
+                        Log.d("Ranjeet",tokenNo+"tokenNo");
+                        Log.d("Ranjeet",orgreqid+"orgreqid");
+                        Log.d("Ranjeet",CrnNumber+"CrnNumber");
+                        Log.d("Ranjeet",mobileNO+"mobileNO");
+                        Log.d("Ranjeet",str_PANCardNumber+"str_PANCardNumber");
+
+                        WalletCreation(currentTime,tokenNo,orgreqid,subtype,CrnNumber,mobileNO,str_PANCardNumber,customerName,str_DateOfBirth,
+                                str_Gender,"India","India","India",str_Pincode,REGIONID,STATEID,CITYID,REGIONNAME,
+                                STATENAME,CITYNAME,str_AddressProofNumber,value);
 
                     }else{
 
@@ -654,10 +680,10 @@ public class CustomerDeatilsFragment extends Fragment {
 
     }
 
-    public void WalletCreation(String REQID,String TOKEN,String ORGREQID,String CUSTOMERTYPE,String CUSTOMERSUBTYPE,
-                               String CRNNUMBER,String MOBILENUMBER,String PANNUMBER,String FIRSTNAME,String LASTNAME,String DOB,
-                               String GENDER,String ADDRESS1,String ADDRESS2,String ADDRESS3,String PINCODE,String REGIONID,String STATEID,
-                               String CITYID,String REGIONNAME,String STATENAME,String CITYNAME,String ADDRESSPROOFTYPE,String ADDRESSPROOFNUMBER){
+    public void WalletCreation(String REQID,String TOKEN,String ORGREQID,String CUSTOMERSUBTYPE,String CRNNUMBER,String MOBILENUMBER,
+                               String PANNUMBER,String FIRSTNAME,String DOB,String GENDER,String ADDRESS1,
+                               String ADDRESS2,String ADDRESS3,String PINCODE,String REGIONID,String STATEID,String CITYID,
+                               String REGIONNAME,String STATENAME,String CITYNAME,String ADDRESSPROOFNUMBER,String ADDRESSPROOFTYPE){
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Wallet Creation Please wait...");
@@ -672,12 +698,13 @@ public class CustomerDeatilsFragment extends Fragment {
             jsonObject.put("REQID", REQID);
             jsonObject.put("TOKEN", TOKEN);
             jsonObject.put("ORGREQID", ORGREQID);
-            jsonObject.put("CUSTOMERTYPE", CUSTOMERTYPE);
+            jsonObject.put("CUSTOMERTYPE", "1");
             jsonObject.put("CUSTOMERSUBTYPE", CUSTOMERSUBTYPE);
             jsonObject.put("CRNNUMBER", CRNNUMBER);
             jsonObject.put("MOBILENUMBER", MOBILENUMBER);
             jsonObject.put("PANNUMBER", PANNUMBER);
             jsonObject.put("FIRSTNAME", FIRSTNAME);
+            jsonObject.put("LASTNAME", ".");
             jsonObject.put("DOB", DOB);
             jsonObject.put("GENDER", GENDER);
             jsonObject.put("ADDRESS1", ADDRESS1);
@@ -828,6 +855,7 @@ public class CustomerDeatilsFragment extends Fragment {
 
                         String tid = sharedPreferenceManager.getStatusArray();
                         sharedPreferenceManager.setAGENTTYPE(AGENTTYPE);
+                        sharedPreferenceManager.setMobileNo(MOBILENUMBER);
                         AgentTypeCustomerType(AGENTTYPE,tid,CUSTOMERID);
 
 
@@ -908,13 +936,21 @@ public class CustomerDeatilsFragment extends Fragment {
                     if (responsecode.equals("00")) {
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
-                        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                       String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
                         FragmentTransaction ft = getFragmentManager().beginTransaction();
                         AddVehicleFragment addVehicleFragment = new AddVehicleFragment();
                         ft.replace(R.id.nav_host_fragment, addVehicleFragment);
                         ft.addToBackStack(null);
                         ft.commit();
+
+
+                        edit_FirstName.setText("");
+                        edit_LastName.setText("");
+                        edit_PANCardNumber.setText("");
+                        edit_DateOfBirth.setText("");
+                        edit_Pincode.setText("");
+                        edit_AddressProofNumber.setText("");
 
 
                     } else {
@@ -948,15 +984,48 @@ public class CustomerDeatilsFragment extends Fragment {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+
                 Map<String, String> params = new HashMap<>();
                 params.put("agenttype", agenttype);
                 params.put("tagactivationid", tagactivationid);
                 params.put("customerid", customerid);
                 return params;
+
             }
         };
+
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+    }
+
+    public void showCalender1(){
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                getActivity(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+
+                month = month+1;
+
+                String fmonth=""+month;
+                String fDate=""+dayOfMonth;
+
+                if(month<10){
+                    fmonth ="0"+month;
+                }
+                if (dayOfMonth<10){
+                    fDate="0"+dayOfMonth;
+                }
+
+                String date = year+"/"+fmonth+"/"+fDate;
+                //String date = year+"-"+month+"-"+day;
+                edit_DateOfBirth.setText(date);
+
+            }
+        },year,month,day);
+
+        datePickerDialog.show();
     }
 }

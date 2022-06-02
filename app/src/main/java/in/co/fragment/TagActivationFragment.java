@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -80,7 +81,8 @@ public class TagActivationFragment extends Fragment {
     String currentTime = "",ORGREQID,agentId;
     SharedPreferenceManager sharedPreferenceManager;
     SessionManager sessionManager;
-    Spinner spinner_SelectBarcode,spinner_SelectProduct,spinner_VehicleType,spinner_ClassBarcode,spinner_Type;
+    Spinner spinner_SelectProduct,spinner_VehicleType,spinner_ClassBarcode,spinner_Type;
+    AutoCompleteTextView autotext_SelectBarcode;
 
     String[] classBarcode = {"-Class Of Barcode-", "VC4", "VC20"};
     HashMap<String, String> classBarcode1 = new HashMap<String, String>();
@@ -137,7 +139,7 @@ public class TagActivationFragment extends Fragment {
         edit_OTP = view.findViewById(R.id.edit_OTP);
         spinner_VehicleType = view.findViewById(R.id.spinner_VehicleType);
         spinner_SelectProduct = view.findViewById(R.id.spinner_SelectProduct);
-        spinner_SelectBarcode = view.findViewById(R.id.spinner_SelectBarcode);
+        autotext_SelectBarcode = view.findViewById(R.id.autotext_SelectBarcode);
         text = view.findViewById(R.id.text);
         spinner_ClassBarcode = view.findViewById(R.id.spinner_ClassBarcode);
         btn_UploadImage = view.findViewById(R.id.btn_UploadImage);
@@ -188,6 +190,8 @@ public class TagActivationFragment extends Fragment {
         VehicleTypeAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
         spinner_VehicleType.setAdapter(VehicleTypeAdapter);
         spinner_VehicleType.setSelection(-1, true);
+
+
 
         spinner_ClassBarcode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -308,6 +312,12 @@ public class TagActivationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+               /* FragmentTransaction ft = getFragmentManager().beginTransaction();
+                CustomerDeatilsFragment customerDeatilsFragment = new CustomerDeatilsFragment();
+                ft.replace(R.id.nav_host_fragment, customerDeatilsFragment);
+                ft.addToBackStack(null);
+                ft.commit();*/
+
                 if (btn_Sendotp.getText().toString().trim().equals("Send Otp")) {
 
                     if(edit_MobileNo1.getText().toString().trim().equals("")){
@@ -323,7 +333,7 @@ public class TagActivationFragment extends Fragment {
 
                         String mobile = edit_MobileNo1.getText().toString().trim();
                         long mobile_no = Long.valueOf(mobile);
-                        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
                         GenerateOTP("230201", "504",currentTime,mobile_no);
 
@@ -348,7 +358,7 @@ public class TagActivationFragment extends Fragment {
 
                         String mobile = sharedPreferenceManager.getMobileNo();
                         long mobile_no = Long.valueOf(mobile);
-                        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
                         String orgreqID = sharedPreferenceManager.getOrgreqId();
 
                         OTPVerify(orgreqID,otp, currentTime,mobile_no);
@@ -393,6 +403,7 @@ public class TagActivationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
                 if(edit_CustomerId.getText().toString().trim().equals("")){
 
                     Toast.makeText(getActivity(), " Fill The CustomerId Details", Toast.LENGTH_LONG).show();
@@ -415,7 +426,7 @@ public class TagActivationFragment extends Fragment {
 
                 }else{
 
-                    String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                    String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
 
                     str_CustomerId = edit_CustomerId.getText().toString().trim();
@@ -424,15 +435,13 @@ public class TagActivationFragment extends Fragment {
                     str_EmailId = edit_EmailId.getText().toString().trim();
                     str_FastagClass = edit_FastagClass.getText().toString().trim();
                     str_VehicleNumber = edit_VehicleNumber.getText().toString().trim();
-                    str_SelectBarcode = spinner_SelectBarcode.getSelectedItem().toString();
+                    str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
                     str_SelectProduct = spinner_SelectProduct.getSelectedItem().toString();
 
                     String tagid = sharedPreferenceManager.getStatusArray();
                     String customerid = sharedPreferenceManager.getCUSTOMERID();
 
                     AgentTypeCustomerType(tagid,str_vctype,bitmap,str_vctype,str_VehicleNumber,str_SelectBarcode,currentTime,str_classbar,customerid);
-
-
 
                 }
             }
@@ -841,8 +850,7 @@ public class TagActivationFragment extends Fragment {
 
                         ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(),R.layout.spinneritem,barCode);
                         classTagSpinerAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
-                        spinner_SelectBarcode.setAdapter(classTagSpinerAdapter);
-                        spinner_SelectBarcode.setSelection(-1,true);
+                        autotext_SelectBarcode.setAdapter(classTagSpinerAdapter);
                     }
 
                 }catch(Exception e){
@@ -1165,7 +1173,7 @@ public class TagActivationFragment extends Fragment {
                         String tagid = sharedPreferenceManager.getStatusArray();
                         String customerid = sharedPreferenceManager.getCUSTOMERID();
                         String agentType = sharedPreferenceManager.getAGENTTYPE();
-                        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
                         JSONArray jsonarray =  new JSONArray();
                         JSONObject params = new JSONObject();
@@ -1325,10 +1333,10 @@ public class TagActivationFragment extends Fragment {
                         if(RESULT.equals("230201")){
 
                             Toast.makeText(getActivity(), RESULT, Toast.LENGTH_LONG).show();
-                            String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                            String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
                             String statues = sharedPreferenceManager.getStatusArray();
                             String agentid = sessionManager.getSalesAgentId();
-                            str_SelectBarcode = spinner_SelectBarcode.getSelectedItem().toString();
+                            str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
 
                             Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00",currentTime);
 
