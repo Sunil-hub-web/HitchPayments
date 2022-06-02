@@ -117,19 +117,16 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <Spinner
-                    android:id="@+id/spinner_SelectBarcode"
+                <AutoCompleteTextView
+                    android:id="@+id/autotext_SelectBarcode"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/forty_five"
                     android:layout_margin="@dimen/ten"
                     android:background="@drawable/deshbord_bg"
-                    android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/two"
-                    android:paddingRight="@dimen/two"
-                    android:spinnerMode="dropdown"
-                    android:text="Please Select Your Area"
+                    android:hint="Please Select BarCode"
+                    android:padding="@dimen/ten"
                     android:textColor="#25297A"
+                    android:textColorHint="@color/red"
                     android:textSize="@dimen/fifteen" />
 
                 <Spinner
@@ -276,7 +273,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/ten"
-                    android:hint="ShowImagePath"
+                    android:hint="Image"
                     android:theme="@style/MyTextInputLayout_overlay"
                     app:boxStrokeColor="@color/red"
                     app:hintTextColor="@color/red">

@@ -137,7 +137,7 @@ public class WalletFragment extends Fragment {
                         Toast.makeText(getActivity(), "Fill The Amount", Toast.LENGTH_SHORT).show();
                     }else{
 
-                        currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
                         String agentId = sessionManager.getSalesAgentId();
                         amount = edit_Amount.getText().toString().trim();
                         int int_amount = Integer.valueOf(amount);
@@ -169,6 +169,8 @@ public class WalletFragment extends Fragment {
                                 if (bundle != null) {
 
                                     ShowResponse(transformBundleToString(bundle));
+
+                                    String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
                                     String str_amount = String.valueOf(amount);
                                     String agentId = sessionManager.getSalesAgentId();
@@ -365,6 +367,8 @@ public class WalletFragment extends Fragment {
                         cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
                         cfPaymentService.setOrientation(0);
                         cfPaymentService.doPayment(getActivity(), params, cftoken, "PROD", "#F8A31A", "#FFFFFF", false);
+
+                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
                         String str_amount1 = String.valueOf(amount);
                         String agentId = sessionManager.getSalesAgentId();

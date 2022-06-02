@@ -186,6 +186,7 @@ public class ReportFragment extends Fragment {
 
                                 existingReport.add(reportModelClassExisting);
                             }
+
                             recyclerReport.setVisibility(View.VISIBLE);
 
                             linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
@@ -225,7 +226,6 @@ public class ReportFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "" + error, Toast.LENGTH_LONG).show();
                 }
-
 
             }
         }){
