@@ -17,12 +17,12 @@ public class NewReportAdapter extends RecyclerView.Adapter<NewReportAdapter.View
 
     @NonNull
     @Override
-    public NewReportAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewReportAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
     }
 

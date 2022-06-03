@@ -19,6 +19,7 @@ public class SharedPreferenceManager {
     private static final String IS_LOGIN = "islogin";
     private static final String IS_ORGREQID = "isorgreqid";
     private static final String IS_MOBILENO = "ismobileno";
+    private static final String IS_CUSTOMERNAME = "CUSTOMERNAME";
     private static final String IS_statusArray = "statusArray";
     private static final String IS_TOKENNO = "tokennox";
     private static final String IS_CRN = "iscrn";
@@ -38,6 +39,18 @@ public class SharedPreferenceManager {
         this.context =  context;
         sharedPreferences = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = sharedPreferences.edit();
+    }
+
+    public void setCUSTOMERNAME(String CUSTOMERNAME){
+
+        editor.putString(IS_CUSTOMERNAME,CUSTOMERNAME);
+        editor.commit();
+
+    }
+
+    public String getCUSTOMERNAME(){
+
+        return sharedPreferences.getString(IS_CUSTOMERNAME,"DEFAULT");
     }
 
     public void setAGENTTYPE(String AGENTTYPE){

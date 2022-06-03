@@ -53,14 +53,14 @@ public class ExistingReportAdapter extends RecyclerView.Adapter<ExistingReportAd
 
     @NonNull
     @Override
-    public ExistingReportAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.reportdetails_existcustomer,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExistingReportAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         sessionManager = new SessionManager(context);
 

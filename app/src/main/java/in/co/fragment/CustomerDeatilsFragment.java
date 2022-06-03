@@ -3,12 +3,15 @@ package in.co.fragment;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -65,6 +68,7 @@ public class CustomerDeatilsFragment extends Fragment {
     EditText edit_FirstName, edit_LastName, edit_PANCardNumber, edit_DateOfBirth, edit_Pincode, edit_AddressProofNumber;
     String str_FirstName, str_LastName, str_PANCardNumber, str_DateOfBirth, str_Gender, str_Pincode,
             str_AddressProofNumber, statusArray, data,agentId;
+    AutoCompleteTextView autotext_SelectBarcode;
 
     String[] genderName = {"-Gender-", "Male", "Female"};
 
@@ -211,9 +215,6 @@ public class CustomerDeatilsFragment extends Fragment {
                     str_AddressProofNumber = edit_AddressProofNumber.getText().toString().trim();
                     String tagId = sharedPreferenceManager.getStatusArray();
 
-                    str_PANCardNumber = str_PANCardNumber.toUpperCase();
-                    str_AddressProofNumber = str_AddressProofNumber.toUpperCase();
-
                     AddCustomeDetails(str_PANCardNumber, tagId, str_FirstName, str_LastName, str_DateOfBirth, str_AddressProofNumber, str_AddressProofNumber);
 
                 }
@@ -256,6 +257,24 @@ public class CustomerDeatilsFragment extends Fragment {
             public void onClick(View v) {
 
                 showCalender1();
+            }
+        });*/
+
+       /* autotext_SelectBarcode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });*/
 
@@ -411,11 +430,14 @@ public class CustomerDeatilsFragment extends Fragment {
                         str_AddressProofNumber = edit_AddressProofNumber.getText().toString().trim();
 
                         str_PANCardNumber = str_PANCardNumber.toUpperCase();
-                        str_AddressProofNumber = str_AddressProofNumber.toUpperCase();
 
-                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+                        int min = 10;
+                        int max = 10000;
+                        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                        String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                        String uniqueId = random_int + currentTime;
 
-                        VerifyNSDLCustomer(currentTime, mobileNO, ORGREQID, str_FirstName, str_LastName, str_PANCardNumber, "1", str_DateOfBirth);
+                        VerifyNSDLCustomer(uniqueId, mobileNO, ORGREQID, str_FirstName, str_LastName, str_PANCardNumber, "1", str_DateOfBirth);
 
                     } else {
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
@@ -493,13 +515,17 @@ public class CustomerDeatilsFragment extends Fragment {
 
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
-                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+                        int min = 10;
+                        int max = 10000;
+                        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                        String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                        String uniqueId = random_int + currentTime;
 
                         String pincode = edit_Pincode.getText().toString().trim();
 
                         sharedPreferenceManager.setStatusArray(statusArray);
 
-                        GetStateCity(currentTime,pincode);
+                        GetStateCity(uniqueId,pincode);
 
                     } else {
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
@@ -624,11 +650,14 @@ public class CustomerDeatilsFragment extends Fragment {
 
                         String customerName = str_FirstName+" "+str_LastName;
 
-                        str_PANCardNumber = str_PANCardNumber.toUpperCase();
-                        str_AddressProofNumber = str_AddressProofNumber.toUpperCase();
 
 
-                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+                        int min = 10;
+                        int max = 10000;
+                        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                        String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                        String uniqueId = random_int + currentTime;
+
                         Log.d("Ranjeet",currentTime+"orgreqid");
                         Log.d("Ranjeet",tokenNo+"tokenNo");
                         Log.d("Ranjeet",orgreqid+"orgreqid");
@@ -636,7 +665,7 @@ public class CustomerDeatilsFragment extends Fragment {
                         Log.d("Ranjeet",mobileNO+"mobileNO");
                         Log.d("Ranjeet",str_PANCardNumber+"str_PANCardNumber");
 
-                        WalletCreation(currentTime,tokenNo,orgreqid,subtype,CrnNumber,mobileNO,str_PANCardNumber,customerName,str_DateOfBirth,
+                        WalletCreation(uniqueId,tokenNo,orgreqid,subtype,CrnNumber,mobileNO,str_PANCardNumber,customerName,str_DateOfBirth,
                                 str_Gender,"India","India","India",str_Pincode,REGIONID,STATEID,CITYID,REGIONNAME,
                                 STATENAME,CITYNAME,str_AddressProofNumber,value);
 
@@ -863,6 +892,8 @@ public class CustomerDeatilsFragment extends Fragment {
                         String tid = sharedPreferenceManager.getStatusArray();
                         sharedPreferenceManager.setAGENTTYPE(AGENTTYPE);
                         sharedPreferenceManager.setMobileNo(MOBILENUMBER);
+                        sharedPreferenceManager.setCUSTOMERNAME(CUSTOMERNAME);
+
                         AgentTypeCustomerType(AGENTTYPE,tid,CUSTOMERID);
 
 
@@ -941,6 +972,7 @@ public class CustomerDeatilsFragment extends Fragment {
                     String statusArray = jsonObject_messages.getString("status");
 
                     if (responsecode.equals("00")) {
+
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
@@ -958,6 +990,8 @@ public class CustomerDeatilsFragment extends Fragment {
                         edit_DateOfBirth.setText("");
                         edit_Pincode.setText("");
                         edit_AddressProofNumber.setText("");
+
+                        sharedPreferenceManager.setStatusArray(statusArray);
 
 
                     } else {

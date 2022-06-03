@@ -28,14 +28,14 @@ public class FastagInventoryAdapter extends RecyclerView.Adapter<FastagInventory
 
     @NonNull
     @Override
-    public FastagInventoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fastaginventoory,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FastagInventoryAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         FastagInventory_ModelClass fastag = fastagInventory.get(position);
 

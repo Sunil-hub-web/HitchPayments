@@ -28,14 +28,14 @@ public class FastagHistoryAdapter extends RecyclerView.Adapter<FastagHistoryAdap
 
     @NonNull
     @Override
-    public FastagHistoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fasttagrequest_history,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FastagHistoryAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         FastagRequestHistory_Model fasttagRequest = requestHistory.get(position);
 

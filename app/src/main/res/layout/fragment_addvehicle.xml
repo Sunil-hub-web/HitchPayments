@@ -49,7 +49,8 @@
                         android:maxLength="10"
                         android:padding="@dimen/five"
                         android:textColor="@color/textcolor"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +71,8 @@
                         android:inputType="text"
                         android:padding="@dimen/five"
                         android:textColor="@color/textcolor"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,11 +93,12 @@
                         android:inputType="text"
                         android:padding="@dimen/five"
                         android:textColor="@color/textcolor"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
+                <!--<com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/editDateOfBirth"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -113,9 +116,10 @@
                         android:inputType="text"
                         android:padding="@dimen/five"
                         android:textColor="@color/textcolor"
-                        android:textSize="@dimen/edittextsize" />
+                        android:textSize="@dimen/edittextsize"
+                        android:focusable="false"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <AutoCompleteTextView
                     android:id="@+id/autotext_SelectBarcode"
@@ -128,7 +132,7 @@
                     android:textColor="#25297A"
                     android:textColorHint="@color/red"
                     android:textSize="@dimen/fifteen" />
-
+`
                 <Spinner
                     android:id="@+id/spinner_SelectProduct"
                     android:layout_width="match_parent"
@@ -145,7 +149,7 @@
                     android:textSize="@dimen/fifteen" />
 
                 <Spinner
-                    android:id="@+id/spinner_ClassBarcode"
+                    android:id="@+id/spinner_VehicleClass"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/forty_five"
                     android:layout_margin="@dimen/ten"
@@ -183,7 +187,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/spinner_Type"
+                    android:id="@+id/spinner_VehicleType"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/forty_five"
                     android:layout_margin="@dimen/ten"
@@ -198,7 +202,7 @@
                     android:textSize="@dimen/fifteen" />
 
                 <Spinner
-                    android:id="@+id/spinner_VehicleType"
+                    android:id="@+id/spinner_VehicleDataType"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/forty_five"
                     android:layout_margin="@dimen/ten"

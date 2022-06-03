@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -81,25 +84,26 @@ public class TagActivationFragment extends Fragment {
     String currentTime = "",ORGREQID,agentId;
     SharedPreferenceManager sharedPreferenceManager;
     SessionManager sessionManager;
-    Spinner spinner_SelectProduct,spinner_VehicleType,spinner_ClassBarcode,spinner_Type;
+    Spinner spinner_SelectProduct, spinner_VehicleClass, spinner_VehicleType, spinner_VehicleDataType;
     AutoCompleteTextView autotext_SelectBarcode;
 
-    String[] classBarcode = {"-Class Of Barcode-", "VC4", "VC20"};
-    HashMap<String, String> classBarcode1 = new HashMap<String, String>();
+    String[] vehicleClass = {"-Select Vehicle Class-", "VC4", "VC20"};
+    HashMap<String, String> vehicleClass1 = new HashMap<String, String>();
 
-    String[] vehicleType = {"-Class Of Barcode-", "Vehicle Number", "Chassis Numner"};
-    HashMap<String, String> vehicleType1 = new HashMap<String, String>();
+    String[] VehicleDataType = {"-Select Vehicle Data Type-", "Vehicle Number", "Chassis Numner"};
+    HashMap<String, String> VehicleDataType1 = new HashMap<String, String>();
 
-    String[] vc4Type = {"-Class Of Barcode-", "Commercial", "Non-Commercial"};
-    HashMap<String, String> vc4Type1 = new HashMap<String, String>();
+    String[] vc4VehicleType = {"-Select Vehicle Type-", "Commercial", "Non-Commercial"};
+    HashMap<String, String> vc4VehicleType1 = new HashMap<String, String>();
 
-    String[] vc20Type = {"-Class Of Barcode-", "Commercial"};
-    HashMap<String, String> vc20Type1 = new HashMap<String, String>();
+    String[] vc20VehicleType = {"-Select Vehicle Type-", "Commercial"};
+    HashMap<String, String> vc20VehicleType1 = new HashMap<String, String>();
 
     String clssBar, str_classbar, vechtype, vctype, str_vechtype, str_vctype;
 
     ArrayList<ClassoFtag_ModelClass> barCode = new ArrayList<>();
     ArrayList<ClassoFtag_ModelClass> product = new ArrayList<>();
+    ArrayList<String> str_barCode = new ArrayList<>();
 
     Button btn_UploadImage,btn_MakePayment;
 
@@ -128,6 +132,9 @@ public class TagActivationFragment extends Fragment {
         text_ExistingCustomer = view.findViewById(R.id.text_ExistingCustomer);
         lin_SearchStatus = view.findViewById(R.id.lin_SearchStatus);
         lin_Sendotp = view.findViewById(R.id.lin_Sendotp);
+        spinner_VehicleDataType = view.findViewById(R.id.spinner_VehicleDataType);
+        spinner_VehicleClass = view.findViewById(R.id.spinner_VehicleClass);
+        spinner_VehicleType = view.findViewById(R.id.spinner_VehicleType);
        // lin_searchDetails = view.findViewById(R.id.lin_searchDetails);
         edit_MobileNo = view.findViewById(R.id.edit_MobileNo);
         edit_MobileNo1 = view.findViewById(R.id.edit_MobileNo1);
@@ -141,15 +148,13 @@ public class TagActivationFragment extends Fragment {
         spinner_SelectProduct = view.findViewById(R.id.spinner_SelectProduct);
         autotext_SelectBarcode = view.findViewById(R.id.autotext_SelectBarcode);
         text = view.findViewById(R.id.text);
-        spinner_ClassBarcode = view.findViewById(R.id.spinner_ClassBarcode);
         btn_UploadImage = view.findViewById(R.id.btn_UploadImage);
-        spinner_Type = view.findViewById(R.id.spinner_Type);
         btn_MakePayment = view.findViewById(R.id.btn_MakePayment);
         edit_ShowImagePath = view.findViewById(R.id.edit_ShowImagePath);
         edit_CustomerId = view.findViewById(R.id.edit_CustomerId);
         edit_CustomerName = view.findViewById(R.id.edit_CustomerName);
         edit_ContactNumber = view.findViewById(R.id.edit_ContactNumber);
-        edit_EmailId = view.findViewById(R.id.edit_EmailId);
+        //edit_EmailId = view.findViewById(R.id.edit_EmailId);
         edit_FastagClass = view.findViewById(R.id.edit_FastagClass);
         edit_VehicleNumber = view.findViewById(R.id.edit_VehicleNumber);
         edit_ShowImagePath = view.findViewById(R.id.edit_ShowImagePath);
@@ -170,54 +175,58 @@ public class TagActivationFragment extends Fragment {
         GetBarcode(agentId);
         Getproduct(agentId);
 
-        classBarcode1.put("VC4", "4");
-        classBarcode1.put("VC20", "20");
+        vehicleClass1.put("VC4", "4");
+        vehicleClass1.put("VC20", "20");
 
-        vehicleType1.put("Vehicle Number", "1");
-        vehicleType1.put("Chassis Numner", "2");
+        VehicleDataType1.put("Vehicle Number", "1");
+        VehicleDataType1.put("Chassis Numner", "2");
 
-        vc4Type1.put("Commercial", "1");
-        vc4Type1.put("Non-Commercial", "2");
+        vc4VehicleType1.put("Commercial", "1");
+        vc4VehicleType1.put("Non-Commercial", "2");
 
-        vc20Type1.put("Commercial", "1");
+        vc4VehicleType1.put("Commercial", "1");
 
-        ArrayAdapter ClassBarcodeAdapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, classBarcode);
+        ArrayAdapter ClassBarcodeAdapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, vehicleClass);
         ClassBarcodeAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
-        spinner_ClassBarcode.setAdapter(ClassBarcodeAdapter);
-        spinner_ClassBarcode.setSelection(-1, true);
+        spinner_VehicleClass.setAdapter(ClassBarcodeAdapter);
+        spinner_VehicleClass.setSelection(-1, true);
 
-        ArrayAdapter VehicleTypeAdapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, vehicleType);
+        ArrayAdapter VehicleTypeAdapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, VehicleDataType);
         VehicleTypeAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
-        spinner_VehicleType.setAdapter(VehicleTypeAdapter);
+        spinner_VehicleDataType.setAdapter(VehicleTypeAdapter);
+        spinner_VehicleDataType.setSelection(-1, true);
+
+        ArrayAdapter Typeadapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, vc4VehicleType);
+        Typeadapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
+        spinner_VehicleType.setAdapter(Typeadapter);
         spinner_VehicleType.setSelection(-1, true);
 
-
-
-        spinner_ClassBarcode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner_VehicleClass.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                clssBar = spinner_ClassBarcode.getSelectedItem().toString();
+                clssBar = spinner_VehicleClass.getSelectedItem().toString();
 
                 if (clssBar.equalsIgnoreCase("VC4")) {
 
-                    ArrayAdapter Typeadapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, vc4Type);
+                    ArrayAdapter Typeadapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, vc4VehicleType);
                     Typeadapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
-                    spinner_Type.setAdapter(Typeadapter);
-                    spinner_Type.setSelection(-1, true);
+                    spinner_VehicleType.setAdapter(Typeadapter);
+                    spinner_VehicleType.setSelection(-1, true);
 
-                    str_classbar = classBarcode1.get("VC4");
-                    //Toast.makeText(getActivity(), value, Toast.LENGTH_LONG).show();
+                    str_classbar = vehicleClass1.get("VC4");
+                    Toast.makeText(getActivity(), str_classbar, Toast.LENGTH_SHORT).show();
 
 
                 } else if (clssBar.equalsIgnoreCase("VC20")) {
 
-                    ArrayAdapter Typeadapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, vc20Type);
+                    ArrayAdapter Typeadapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, vc20VehicleType);
                     Typeadapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
-                    spinner_Type.setAdapter(Typeadapter);
-                    spinner_Type.setSelection(-1, true);
+                    spinner_VehicleType.setAdapter(Typeadapter);
+                    spinner_VehicleType.setSelection(-1, true);
 
-                    str_classbar = classBarcode1.get("VC20");
+                    str_classbar = vehicleClass1.get("VC20");
+                    Toast.makeText(getActivity(), str_classbar, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -236,11 +245,13 @@ public class TagActivationFragment extends Fragment {
 
                 if (vechtype.equalsIgnoreCase("Commercial")) {
 
-                    str_vechtype = vehicleType1.get("Commercial");
+                    str_vechtype = vc4VehicleType1.get("Commercial");
+                    Toast.makeText(getActivity(), str_vechtype, Toast.LENGTH_SHORT).show();
 
                 } else if (vechtype.equalsIgnoreCase("Non-Commercial")) {
 
-                    str_vechtype = vehicleType1.get("Non-Commercial");
+                    str_vechtype = vc4VehicleType1.get("Non-Commercial");
+                    Toast.makeText(getActivity(), str_vechtype, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -251,19 +262,21 @@ public class TagActivationFragment extends Fragment {
             }
         });
 
-        spinner_Type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner_VehicleDataType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                vctype = spinner_Type.getSelectedItem().toString();
+                vctype = spinner_VehicleDataType.getSelectedItem().toString();
 
                 if (vctype.equalsIgnoreCase("Vehicle Number")) {
 
-                    str_vctype = vehicleType1.get("Vehicle Number");
+                    str_vctype = VehicleDataType1.get("Vehicle Number");
+                    Toast.makeText(getActivity(), str_vctype, Toast.LENGTH_SHORT).show();
 
                 } else if (vctype.equalsIgnoreCase("Chassis Numner")) {
 
-                    str_vctype = vehicleType1.get("Chassis Numner");
+                    str_vctype = VehicleDataType1.get("Chassis Numner");
+                    Toast.makeText(getActivity(), str_vctype, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -333,9 +346,14 @@ public class TagActivationFragment extends Fragment {
 
                         String mobile = edit_MobileNo1.getText().toString().trim();
                         long mobile_no = Long.valueOf(mobile);
-                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
 
-                        GenerateOTP("230201", "504",currentTime,mobile_no);
+                        int min = 10;
+                        int max = 10000;
+                        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                        String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                        String uniqueId = random_int + currentTime;
+
+                        GenerateOTP("230201", "504",uniqueId,mobile_no);
 
                     }
 
@@ -358,10 +376,15 @@ public class TagActivationFragment extends Fragment {
 
                         String mobile = sharedPreferenceManager.getMobileNo();
                         long mobile_no = Long.valueOf(mobile);
-                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
                         String orgreqID = sharedPreferenceManager.getOrgreqId();
 
-                        OTPVerify(orgreqID,otp, currentTime,mobile_no);
+                        int min = 10;
+                        int max = 10000;
+                        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                        String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                        String uniqueId = random_int + currentTime;
+
+                        OTPVerify(orgreqID,otp, uniqueId,mobile_no);
 
                     }
 
@@ -416,23 +439,22 @@ public class TagActivationFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Fill The ContactNumber Details", Toast.LENGTH_LONG).show();
 
-                }else if(edit_EmailId.getText().toString().trim().equals("")){
-
-                    Toast.makeText(getActivity(), "Fill The EmailId Details", Toast.LENGTH_LONG).show();
-
                 }else if(edit_VehicleNumber.getText().toString().trim().equals("")){
 
                     Toast.makeText(getActivity(), "Fill The VehicleNumber Details", Toast.LENGTH_LONG).show();
 
                 }else{
 
-                    String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
-
+                    int min = 10;
+                    int max = 10000;
+                    int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                    String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                    String uniqueId = random_int + currentTime;
 
                     str_CustomerId = edit_CustomerId.getText().toString().trim();
                     str_CustomerName = edit_CustomerName.getText().toString().trim();
                     str_ContactNumber = edit_ContactNumber.getText().toString().trim();
-                    str_EmailId = edit_EmailId.getText().toString().trim();
+                    //str_EmailId = edit_EmailId.getText().toString().trim();
                     str_FastagClass = edit_FastagClass.getText().toString().trim();
                     str_VehicleNumber = edit_VehicleNumber.getText().toString().trim();
                     str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
@@ -441,7 +463,7 @@ public class TagActivationFragment extends Fragment {
                     String tagid = sharedPreferenceManager.getStatusArray();
                     String customerid = sharedPreferenceManager.getCUSTOMERID();
 
-                    AgentTypeCustomerType(tagid,str_vctype,bitmap,str_vctype,str_VehicleNumber,str_SelectBarcode,currentTime,str_classbar,customerid);
+                    //AgentTypeCustomerType(tagid,str_vctype,bitmap,str_vctype,str_VehicleNumber,str_SelectBarcode,uniqueId,str_classbar,customerid);
 
                 }
             }
@@ -481,6 +503,23 @@ public class TagActivationFragment extends Fragment {
             }
         });
 
+        autotext_SelectBarcode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         return view;
     }
@@ -538,7 +577,11 @@ public class TagActivationFragment extends Fragment {
                         edit_CustomerId.setText(CUSTOMERID);
                         edit_CustomerName.setText(CUSTOMERNAME);
                         edit_ContactNumber.setText(MOBILENUMBER);
-                        edit_EmailId.setText(EMAILID);
+                        //edit_EmailId.setText(EMAILID);
+
+                        sharedPreferenceManager.setCUSTOMERID(CUSTOMERID);
+                        sharedPreferenceManager.setMobileNo(MOBILENUMBER);
+                        sharedPreferenceManager.setCUSTOMERNAME(CUSTOMERNAME);
 
                     }else if(responseCode.equalsIgnoreCase("01")){
 
@@ -844,13 +887,20 @@ public class TagActivationFragment extends Fragment {
 
                                 ClassoFtag_ModelClass ftag_modelClass = new ClassoFtag_ModelClass(barcode);
                                 barCode.add(ftag_modelClass);
+
+                                str_barCode.add(barcode);
                             }
 
                         }
 
-                        ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(),R.layout.spinneritem,barCode);
+                       /* ClassTagSpinerAdapter classTagSpinerAdapter = new ClassTagSpinerAdapter(getActivity(),R.layout.spinneritem,barCode);
                         classTagSpinerAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
-                        autotext_SelectBarcode.setAdapter(classTagSpinerAdapter);
+                        autotext_SelectBarcode.setAdapter(classTagSpinerAdapter);*/
+
+                        ArrayAdapter<String> autoTextBarCode = new ArrayAdapter<String>(getActivity(), R.layout.spinneritem, str_barCode);
+                        autotext_SelectBarcode.setAdapter(autoTextBarCode);
+                        autotext_SelectBarcode.setThreshold(1);//will start working from first character
+                        autotext_SelectBarcode.setTextColor(ContextCompat.getColor(getActivity(), R.color.danger));
                     }
 
                 }catch(Exception e){
@@ -1173,7 +1223,20 @@ public class TagActivationFragment extends Fragment {
                         String tagid = sharedPreferenceManager.getStatusArray();
                         String customerid = sharedPreferenceManager.getCUSTOMERID();
                         String agentType = sharedPreferenceManager.getAGENTTYPE();
-                        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+
+                        str_CustomerId = edit_CustomerId.getText().toString().trim();
+                        str_CustomerName = edit_CustomerName.getText().toString().trim();
+                        str_ContactNumber = edit_ContactNumber.getText().toString().trim();
+
+                        sharedPreferenceManager.setStatusArray(tagid);
+
+
+
+                        int min = 10;
+                        int max = 10000;
+                        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                        String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                        String uniqueId = random_int + currentTime;
 
                         JSONArray jsonarray =  new JSONArray();
                         JSONObject params = new JSONObject();
@@ -1205,7 +1268,7 @@ public class TagActivationFragment extends Fragment {
                         Log.d("Ranjeeet",jsonarray.toString());
                         //Toast.makeText(getActivity(), jsonarray.toString(), Toast.LENGTH_LONG).show();
 
-                        addVehicle(currentTime,mobile,CustomerID,jsonarray);
+                        addVehicle(uniqueId,str_ContactNumber,str_CustomerId,jsonarray);
 
 
                     } else {
@@ -1315,9 +1378,7 @@ public class TagActivationFragment extends Fragment {
 
                     if (responseCode.equalsIgnoreCase("00")) {
 
-                        Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
-
-
+                       // Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                         JSONArray jsonArray_TAG = new JSONArray(TAG);
 
                         JSONObject jsonObject_TAG = jsonArray_TAG.getJSONObject(0);
@@ -1328,17 +1389,26 @@ public class TagActivationFragment extends Fragment {
                         String ERRORCODE = jsonObject_TAG.getString("ERRORCODE");
                         String VEHICLENO = jsonObject_TAG.getString("VEHICLENO");
                         String VEHICLETYPE = jsonObject_TAG.getString("VEHICLETYPE");
+
                         String RESULT = jsonObject_TAG.getString("RESULT");
 
                         if(RESULT.equals("230201")){
 
+
+                            Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                             Toast.makeText(getActivity(), RESULT, Toast.LENGTH_LONG).show();
-                            String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+
+                            int min = 10;
+                            int max = 10000;
+                            int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                            String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                            String uniqueId = random_int + currentTime;
+
                             String statues = sharedPreferenceManager.getStatusArray();
                             String agentid = sessionManager.getSalesAgentId();
                             str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
 
-                            Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00",currentTime);
+                            Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00",uniqueId);
 
                         }else{
 
