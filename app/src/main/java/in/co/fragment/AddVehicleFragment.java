@@ -798,7 +798,7 @@ public class AddVehicleFragment extends Fragment {
                         String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
                         String uniqueId = random_int + currentTime;
 
-                        getStatues("0","Success",RESULT,status,uniqueId);
+
 
                         if(RESULT.equals("230201")){
 
@@ -810,7 +810,9 @@ public class AddVehicleFragment extends Fragment {
                             String agentid = sessionManager.getSalesAgentId();
                             str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
 
-                            Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00","503");
+                            getStatues("0","Success",RESULT,status,uniqueId);
+
+                            //Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00","503");
 
                         }else{
 
@@ -1076,6 +1078,12 @@ public class AddVehicleFragment extends Fragment {
                     if(status.equals("200")){
 
                         Toast.makeText(getActivity(), "data updated", Toast.LENGTH_SHORT).show();
+
+                        String statues = sharedPreferenceManager.getStatusArray();
+                        String agentid = sessionManager.getSalesAgentId();
+                        str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
+
+                        Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00","503");
 
                     }else {
 
