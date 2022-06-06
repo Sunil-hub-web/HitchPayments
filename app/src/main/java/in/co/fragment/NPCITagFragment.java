@@ -72,7 +72,11 @@ public class NPCITagFragment extends Fragment {
         cardView = view.findViewById(R.id.cardView);
         name_text.setText("NPCI Tag");
 
-        String currentTime = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
+        int min = 10;
+        int max = 10000;
+        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+        String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+        String uniqueId = random_int + currentTime;
 
         btn_SearchStatues.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +90,7 @@ public class NPCITagFragment extends Fragment {
 
                     String VehicleNo = edit_VehicleNo.getText().toString().trim();
 
-                    NPCITagstatus(VehicleNo,currentTime);
+                    NPCITagstatus(VehicleNo,uniqueId);
 
                 }
             }
