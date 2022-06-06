@@ -272,26 +272,29 @@
 
                 </LinearLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/ten"
-                    android:hint="Image"
-                    android:theme="@style/MyTextInputLayout_overlay"
-                    app:boxStrokeColor="@color/red"
-                    app:hintTextColor="@color/red">
+                    android:layout_height="@dimen/two_hundred"
+                    android:elevation="@dimen/three"
+                    app:cardCornerRadius="@dimen/eight"
+                    android:layout_marginLeft="@dimen/forty"
+                    android:layout_marginRight="@dimen/forty">
 
-                    <EditText
-                        android:id="@+id/edit_ShowImagePath"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/fifty"
-                        android:inputType="text"
-                        android:padding="@dimen/five"
-                        android:textColor="@color/textcolor"
-                        android:textSize="@dimen/edittextsize" />
+                        android:layout_height="match_parent">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <ImageView
+                            android:id="@+id/edit_ShowImagePath"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:scaleType="centerCrop"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_MakePayment"

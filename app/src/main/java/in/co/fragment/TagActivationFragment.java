@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -108,7 +109,7 @@ public class TagActivationFragment extends Fragment {
     Button btn_UploadImage,btn_MakePayment;
 
     EditText edit_CustomerId,edit_CustomerName,edit_ContactNumber,edit_EmailId,edit_FastagClass,
-            edit_VehicleNumber,edit_ShowImagePath;
+            edit_VehicleNumber;
 
     String str_CustomerId,str_CustomerName,str_ContactNumber,str_EmailId,str_FastagClass,str_VehicleNumber,
             str_SelectBarcode,str_SelectProduct,parameters;
@@ -116,6 +117,8 @@ public class TagActivationFragment extends Fragment {
     ActivityResultLauncher<Intent> resultLauncher;
 
     Bitmap bitmap;
+
+    ImageView edit_ShowImagePath;
 
 
     @Nullable
@@ -157,7 +160,7 @@ public class TagActivationFragment extends Fragment {
         //edit_EmailId = view.findViewById(R.id.edit_EmailId);
         edit_FastagClass = view.findViewById(R.id.edit_FastagClass);
         edit_VehicleNumber = view.findViewById(R.id.edit_VehicleNumber);
-        edit_ShowImagePath = view.findViewById(R.id.edit_ShowImagePath);
+        //edit_ShowImagePath = view.findViewById(R.id.edit_ShowImagePath);
 
 
         text.setVisibility(View.GONE);
@@ -488,7 +491,7 @@ public class TagActivationFragment extends Fragment {
                     try {
 
                         bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), intent.getData());
-                        edit_ShowImagePath.setText(bitmap.toString());
+                        edit_ShowImagePath.setImageBitmap(bitmap);
 
                     } catch (Exception e) {
 

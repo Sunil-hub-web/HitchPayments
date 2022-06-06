@@ -971,6 +971,8 @@ public class CustomerDeatilsFragment extends Fragment {
                     String responsecode = jsonObject_messages.getString("responsecode");
                     String statusArray = jsonObject_messages.getString("status");
 
+                    sharedPreferenceManager.setStatusArray(statusArray);
+
                     if (responsecode.equals("00")) {
 
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
@@ -990,8 +992,6 @@ public class CustomerDeatilsFragment extends Fragment {
                         edit_DateOfBirth.setText("");
                         edit_Pincode.setText("");
                         edit_AddressProofNumber.setText("");
-
-                        sharedPreferenceManager.setStatusArray(statusArray);
 
 
                     } else {

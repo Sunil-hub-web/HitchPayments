@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -100,11 +103,11 @@ public class AddVehicleFragment extends Fragment {
     Bitmap bitmap;
     File f;
     String ImageDecode;
-
+    ImageView edit_ShowImagePath;
     EditText edit_CustomerId,edit_CustomerName,edit_ContactNumber,edit_EmailId,edit_FastagClass,
-            edit_VehicleNumber,edit_ShowImagePath;
+            edit_VehicleNumber;
     String str_CustomerId,str_CustomerName,str_ContactNumber,str_EmailId,str_FastagClass,str_VehicleNumber,
-            str_SelectBarcode,str_SelectProduct,parameters;
+            str_SelectBarcode,str_SelectProduct,parameters,profile_photo;
 
     ActivityResultLauncher<Intent> resultLauncher;
 
@@ -131,7 +134,7 @@ public class AddVehicleFragment extends Fragment {
         //edit_EmailId = view.findViewById(R.id.edit_EmailId);
         edit_FastagClass = view.findViewById(R.id.edit_FastagClass);
         edit_VehicleNumber = view.findViewById(R.id.edit_VehicleNumber);
-        edit_ShowImagePath = view.findViewById(R.id.edit_ShowImagePath);
+        //edit_ShowImagePath = view.findViewById(R.id.edit_ShowImagePath);
 
         sessionManager = new SessionManager(getContext());
         sharedPreferenceManager = new SharedPreferenceManager(getContext());
@@ -142,8 +145,8 @@ public class AddVehicleFragment extends Fragment {
         VehicleDataType1.put("Vehicle Number", "1");
         VehicleDataType1.put("Chassis Numner", "2");
 
-        vc4VehicleType1.put("Commercial", "1");
-        vc4VehicleType1.put("Non-Commercial", "2");
+        vc4VehicleType1.put("Commercial Type", "1");
+        vc4VehicleType1.put("Non-Commercial Type", "2");
 
         vc20VehicleType1.put("Commercial", "1");
 
@@ -204,14 +207,14 @@ public class AddVehicleFragment extends Fragment {
 
                 vechtype = spinner_VehicleType.getSelectedItem().toString();
 
-                if (vechtype.equalsIgnoreCase("Commercial")) {
+                if (vechtype.equalsIgnoreCase("Commercial Type")) {
 
-                    str_vechtype = vc4VehicleType1.get("Commercial");
+                    str_vechtype = vc4VehicleType1.get("Commercial Type");
                     Toast.makeText(getActivity(), str_vechtype, Toast.LENGTH_SHORT).show();
 
-                } else if (vechtype.equalsIgnoreCase("Non-Commercial")) {
+                } else if (vechtype.equalsIgnoreCase("Non-Commercial Type")) {
 
-                    str_vechtype = vc4VehicleType1.get("Non-Commercial");
+                    str_vechtype = vc4VehicleType1.get("Non-Commercial Type");
                     Toast.makeText(getActivity(), str_vechtype, Toast.LENGTH_SHORT).show();
                 }
 
@@ -289,9 +292,7 @@ public class AddVehicleFragment extends Fragment {
                     String tagid = sharedPreferenceManager.getStatusArray();
                     String customerid = sharedPreferenceManager.getCUSTOMERID();
 
-                    AgentTypeCustomerType(tagid,str_vctype,bitmap,str_vctype,str_VehicleNumber,str_SelectBarcode,"503",str_classbar,customerid);
-
-
+                    AgentTypeCustomerType(tagid,vechtype,vctype,str_VehicleNumber,str_SelectBarcode,"503",clssBar,customerid);
 
                 }
             }
@@ -315,8 +316,18 @@ public class AddVehicleFragment extends Fragment {
 
                     try {
 
-                        bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), intent.getData());
-                        edit_ShowImagePath.setText(bitmap.toString());
+                      /*  bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), intent.getData());
+                        edit_ShowImagePath.setImageBitmap(bitmap);*/
+
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), intent.getData());
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bitmap = Bitmap.createScaledBitmap(bitmap, 500, 750, true);
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 80, baos); //bm is the bitmap object
+                        byte[] img = baos.toByteArray();
+                        profile_photo = Base64.encodeToString(img, Base64.DEFAULT);
+                        edit_ShowImagePath.setImageBitmap(bitmap);
+
+
 
                     } catch (Exception e) {
 
@@ -496,6 +507,11 @@ public class AddVehicleFragment extends Fragment {
                             JSONObject jsonObject_status = jsonArray_status.getJSONObject(i);
 
                             String prodctCode = jsonObject_status.getString("prodctCode");
+                            String userId = jsonObject_status.getString("userId");
+                            String fastagClass = jsonObject_status.getString("fastagClass");
+                            String fastagprice = jsonObject_status.getString("fastagprice");
+                            String initialPayment = jsonObject_status.getString("initialPayment");
+                            //String prodctCode = jsonObject_status.getString("prodctCode");
 
                             if (prodctCode.equals("")) {
 
@@ -566,7 +582,7 @@ public class AddVehicleFragment extends Fragment {
         return byteArrayOutputStream.toByteArray();
     }
 
-    public void AgentTypeCustomerType(String tagactivationid, String vehicletype,Bitmap rcbook,String vehiclenumbertype,String vehiclechasisnumber,
+    public void AgentTypeCustomerType(String tagactivationid, String vehicletype,String vehiclenumbertype,String vehiclechasisnumber,
                                       String barcodeid,String transactionid,String classofBarcode,String productid) {
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
@@ -574,14 +590,14 @@ public class AddVehicleFragment extends Fragment {
         progressDialog.show();
 
 
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, AppUrl.addcontactnumber, new Response.Listener<NetworkResponse>() {
+        StringRequest volleyMultipartRequest = new StringRequest(Request.Method.POST, AppUrl.addcontactnumber, new Response.Listener<String>() {
             @Override
-            public void onResponse(NetworkResponse response) {
+            public void onResponse(String response) {
 
                 progressDialog.dismiss();
 
                 try {
-                    JSONObject jsonObject = new JSONObject(new String(response.data));
+                    JSONObject jsonObject = new JSONObject(response);
 
                     String status = jsonObject.getString("status");
                     String error = jsonObject.getString("error");
@@ -596,7 +612,7 @@ public class AddVehicleFragment extends Fragment {
 
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
 
-                        String imgdata = jsonObject_messages.getString("imgdata");
+                       // String imgdata = jsonObject_messages.getString("imgdata");
 
                         String mobile = sharedPreferenceManager.getMobileNo();
                         String CustomerID = sharedPreferenceManager.getCUSTOMERID();
@@ -610,6 +626,7 @@ public class AddVehicleFragment extends Fragment {
 
                         sharedPreferenceManager.setStatusArray(tagid);
 
+                        String imgdata = "data:image/png;base64,"+profile_photo;
 
 
                         int min = 10;
@@ -648,7 +665,7 @@ public class AddVehicleFragment extends Fragment {
                         Log.d("Ranjeeet",jsonarray.toString());
                         //Toast.makeText(getActivity(), jsonarray.toString(), Toast.LENGTH_LONG).show();
 
-                        addVehicle(uniqueId,str_ContactNumber,str_CustomerId,jsonarray);
+                        addVehicle("503",str_ContactNumber,str_CustomerId,jsonarray);
 
 
                     } else {
@@ -686,6 +703,7 @@ public class AddVehicleFragment extends Fragment {
 
                 params.put("tagactivationid", tagactivationid);
                 params.put("vehicletype", vehicletype);
+                params.put("rcbook", "");
                 params.put("vehiclenumbertype", vehiclenumbertype);
                 params.put("vehiclechasisnumber", vehiclechasisnumber);
                 params.put("barcodeid", barcodeid);
@@ -693,11 +711,12 @@ public class AddVehicleFragment extends Fragment {
                 params.put("classofBarcode", classofBarcode);
                 params.put("productid", productid);
 
+
                 return params;
 
             }
 
-            @Override
+           /* @Override
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();
 
@@ -705,13 +724,14 @@ public class AddVehicleFragment extends Fragment {
                 params.put("rcbook", new DataPart(imagename + ".png", getFileDataFromDrawable(rcbook)));
 
                 return params;
-            }
+            }*/
         };
         volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(volleyMultipartRequest);
 
     }
+
     public void addVehicle(String TRANSACTIONID, String MOBILENO, String CUSTOMERID, JSONArray jsonArray) {
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
@@ -772,32 +792,37 @@ public class AddVehicleFragment extends Fragment {
 
                         String RESULT = jsonObject_TAG.getString("RESULT");
 
+                        int min = 10;
+                        int max = 10000;
+                        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+                        String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
+                        String uniqueId = random_int + currentTime;
+
+                        getStatues("0","Success",RESULT,status,uniqueId);
+
                         if(RESULT.equals("230201")){
 
 
                             Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
                             Toast.makeText(getActivity(), RESULT, Toast.LENGTH_LONG).show();
 
-                            int min = 10;
-                            int max = 10000;
-                            int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
-                            String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
-                            String uniqueId = random_int + currentTime;
-
                             String statues = sharedPreferenceManager.getStatusArray();
                             String agentid = sessionManager.getSalesAgentId();
                             str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
 
-                            Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00",uniqueId);
+                            Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00","503");
 
                         }else{
 
                             Toast.makeText(getActivity(), RESULT, Toast.LENGTH_LONG).show();
+
+                            getStatues("1","Failed",RESULT,status,uniqueId);
                         }
 
                     } else {
 
                         Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
+
                     }
 
                 } catch (JSONException e) {
@@ -869,6 +894,12 @@ public class AddVehicleFragment extends Fragment {
                     if (responsecode.equals("00")) {
 
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
+
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        HomeFragment homeFragment = new HomeFragment();
+                        ft.replace(R.id.nav_host_fragment, homeFragment);
+                        ft.addToBackStack(null);
+                        ft.commit();
 
                     } else {
                         Toast.makeText(getActivity(), statusArray, Toast.LENGTH_LONG).show();
@@ -1024,5 +1055,78 @@ public class AddVehicleFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsonObjectRequest);
     }
+
+    public void getStatues(String transactionstatus,String txnstatus,String responsecode,String responsestatus,String tagactivationid){
+
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Get Barcode Please Wait...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppUrl.addcontactnumber, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String status = jsonObject.getString("status");
+                    String error = jsonObject.getString("error");
+                    String messages = jsonObject.getString("messages");
+
+                    if(status.equals("200")){
+
+                        Toast.makeText(getActivity(), "data updated", Toast.LENGTH_SHORT).show();
+
+                    }else {
+
+                        Toast.makeText(getActivity(), "data updated", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+
+                    Toast.makeText(getContext().getApplicationContext(), "Please check Internet Connection", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Log.d("responceVolley", "" + error);
+
+                    Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }){
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+
+                params.put("transactionstatus",transactionstatus);
+                params.put("txnstatus",txnstatus);
+                params.put("responsecode",responsecode);
+                params.put("responsestatus",responsestatus);
+                params.put("tagactivationid",tagactivationid);
+
+                return params;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+
+    }
+
+
 
 }
