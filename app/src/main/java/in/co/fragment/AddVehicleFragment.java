@@ -107,7 +107,7 @@ public class AddVehicleFragment extends Fragment {
     EditText edit_CustomerId,edit_CustomerName,edit_ContactNumber,edit_EmailId,edit_FastagClass,
             edit_VehicleNumber;
     String str_CustomerId,str_CustomerName,str_ContactNumber,str_EmailId,str_FastagClass,str_VehicleNumber,
-            str_SelectBarcode,str_SelectProduct,parameters,profile_photo;
+            str_SelectBarcode,str_SelectProduct,parameters,profile_photo,transctionId,productId,productId1,productPrice,productid;
 
     ActivityResultLauncher<Intent> resultLauncher;
 
@@ -251,6 +251,28 @@ public class AddVehicleFragment extends Fragment {
             }
         });
 
+        spinner_SelectProduct.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                productId = spinner_SelectProduct.getSelectedItem().toString();
+
+                ClassoFtag_ModelClass mystate = (ClassoFtag_ModelClass) parent.getSelectedItem();
+
+                productId1 = mystate.getClassoFtag();
+                productPrice = mystate.getFastagprice();
+                productid = mystate.getProductid();
+
+                Log.d("cate_Name", productId1 + "  " + productPrice);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         btn_MakePayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -279,6 +301,9 @@ public class AddVehicleFragment extends Fragment {
                     String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
                     String uniqueId = random_int + currentTime;
 
+                    transctionId = uniqueId;
+
+
 
                     str_CustomerId = edit_CustomerId.getText().toString().trim();
                     str_CustomerName = edit_CustomerName.getText().toString().trim();
@@ -292,7 +317,9 @@ public class AddVehicleFragment extends Fragment {
                     String tagid = sharedPreferenceManager.getStatusArray();
                     String customerid = sharedPreferenceManager.getCUSTOMERID();
 
-                    AgentTypeCustomerType(tagid,vechtype,vctype,str_VehicleNumber,str_SelectBarcode,"503",clssBar,customerid);
+                    Log.d("sunilagenttype",tagid+" "+vechtype+" "+vctype+" "+str_VehicleNumber+" "+str_SelectBarcode+" "+transctionId+" "+clssBar+" "+customerid);
+
+                    AgentTypeCustomerType(tagid,vechtype,str_vctype,str_VehicleNumber,str_SelectBarcode,transctionId,clssBar,productid);
 
                 }
             }
@@ -345,7 +372,7 @@ public class AddVehicleFragment extends Fragment {
 
         agentId = sessionManager.getSalesAgentId();
 
-        GetBarcode(agentId);
+        //GetBarcode(agentId);
         Getproduct(agentId);
 
         try {
@@ -417,10 +444,10 @@ public class AddVehicleFragment extends Fragment {
 
                             } else {
 
-                                ClassoFtag_ModelClass ftag_modelClass = new ClassoFtag_ModelClass(barcode);
+                                /*ClassoFtag_ModelClass ftag_modelClass = new ClassoFtag_ModelClass(barcode);
                                 barCode.add(ftag_modelClass);
 
-                                str_barCode.add(barcode);
+                                str_barCode.add(barcode);*/
                             }
 
                         }
@@ -507,6 +534,7 @@ public class AddVehicleFragment extends Fragment {
                             JSONObject jsonObject_status = jsonArray_status.getJSONObject(i);
 
                             String prodctCode = jsonObject_status.getString("prodctCode");
+                            String productid = jsonObject_status.getString("productid");
                             String userId = jsonObject_status.getString("userId");
                             String fastagClass = jsonObject_status.getString("fastagClass");
                             String fastagprice = jsonObject_status.getString("fastagprice");
@@ -517,7 +545,7 @@ public class AddVehicleFragment extends Fragment {
 
                             } else {
 
-                                ClassoFtag_ModelClass ftag_modelClass = new ClassoFtag_ModelClass(prodctCode);
+                                ClassoFtag_ModelClass ftag_modelClass = new ClassoFtag_ModelClass(prodctCode,fastagprice,productid);
                                 product.add(ftag_modelClass);
                             }
 
@@ -585,6 +613,9 @@ public class AddVehicleFragment extends Fragment {
     public void AgentTypeCustomerType(String tagactivationid, String vehicletype,String vehiclenumbertype,String vehiclechasisnumber,
                                       String barcodeid,String transactionid,String classofBarcode,String productid) {
 
+        Log.d("sunilaProductdetails_below_method",tagactivationid+" "+vehicletype+" "+vehiclenumbertype+" "+vehiclechasisnumber+" "+barcodeid+" "+transactionid+" "+classofBarcode+" "+productid);
+
+
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Data Upload Please wait...");
         progressDialog.show();
@@ -624,7 +655,7 @@ public class AddVehicleFragment extends Fragment {
                         str_CustomerName = edit_CustomerName.getText().toString().trim();
                         str_ContactNumber = edit_ContactNumber.getText().toString().trim();
 
-                        sharedPreferenceManager.setStatusArray(tagid);
+                        //sharedPreferenceManager.setStatusArray(tagid);
 
                         String imgdata = "data:image/png;base64,"+profile_photo;
 
@@ -663,9 +694,10 @@ public class AddVehicleFragment extends Fragment {
 
                         jsonarray.put(params);
                         Log.d("Ranjeeet",jsonarray.toString());
+                        Log.d("suniladdvech",transctionId+" "+str_ContactNumber+" "+str_CustomerId);
                         //Toast.makeText(getActivity(), jsonarray.toString(), Toast.LENGTH_LONG).show();
 
-                        addVehicle("503",str_ContactNumber,str_CustomerId,jsonarray);
+                        addVehicle(transctionId,str_ContactNumber,str_CustomerId,jsonarray);
 
 
                     } else {
@@ -711,6 +743,7 @@ public class AddVehicleFragment extends Fragment {
                 params.put("classofBarcode", classofBarcode);
                 params.put("productid", productid);
 
+                Log.d("sunilaProductdetails",tagactivationid+" "+vehicletype+" "+vehiclenumbertype+" "+vehiclechasisnumber+" "+barcodeid+" "+transactionid+" "+classofBarcode+" "+productid);
 
                 return params;
 
@@ -748,6 +781,9 @@ public class AddVehicleFragment extends Fragment {
             jsonObject.put("MOBILENO", MOBILENO);
             jsonObject.put("CUSTOMERID", CUSTOMERID);
             jsonObject.put("ITEM", jsonArray);
+
+            Log.d("Ranjeeetarray",jsonArray.toString());
+            Log.d("suniladd",TRANSACTIONID+" "+MOBILENO+" "+CUSTOMERID);
 
         } catch (Exception e) {
 
@@ -798,8 +834,6 @@ public class AddVehicleFragment extends Fragment {
                         String currentTime = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
                         String uniqueId = random_int + currentTime;
 
-
-
                         if(RESULT.equals("230201")){
 
 
@@ -810,15 +844,20 @@ public class AddVehicleFragment extends Fragment {
                             String agentid = sessionManager.getSalesAgentId();
                             str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
 
-                            getStatues("0","Success",RESULT,status,uniqueId);
+                            String tagid = sharedPreferenceManager.getStatusArray();
+
+                            getStatues("0","Success",RESULT,status,tagid);
+
+                            Log.d("sunilstatuies",RESULT+" "+status+" "+tagid);
 
                             //Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00","503");
 
                         }else{
 
                             Toast.makeText(getActivity(), RESULT, Toast.LENGTH_LONG).show();
+                            String tagid = sharedPreferenceManager.getStatusArray();
 
-                            getStatues("1","Failed",RESULT,status,uniqueId);
+                            getStatues("0","Failed",RESULT,status,tagid);
                         }
 
                     } else {
@@ -941,6 +980,9 @@ public class AddVehicleFragment extends Fragment {
                 params.put("userid", userid);
                 params.put("fastagprice", fastagprice);
                 params.put("transactionid", transactionid);
+
+                Log.d("sunilupdatetoken",tagactivationid+" "+barcodeid+" "+userid+" "+fastagprice+" "+transactionid);
+
 
                 return params;
             }
@@ -1083,7 +1125,9 @@ public class AddVehicleFragment extends Fragment {
                         String agentid = sessionManager.getSalesAgentId();
                         str_SelectBarcode = autotext_SelectBarcode.getText().toString().trim();
 
-                        Updatetokenandcnr(statues,str_SelectBarcode,agentid,"200.00","503");
+                        Log.d("suniltoken",statues+" "+str_SelectBarcode+" "+agentid+" "+"200.00"+" "+transctionId);
+
+                        Updatetokenandcnr(statues,str_SelectBarcode,agentid,productPrice,transctionId);
 
                     }else {
 
@@ -1124,6 +1168,8 @@ public class AddVehicleFragment extends Fragment {
                 params.put("responsecode",responsecode);
                 params.put("responsestatus",responsestatus);
                 params.put("tagactivationid",tagactivationid);
+
+                Log.d("sunilstatus",transactionstatus+" "+txnstatus+" "+responsecode+" "+responsestatus+" "+tagactivationid);
 
                 return params;
             }

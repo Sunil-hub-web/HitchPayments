@@ -343,6 +343,8 @@ public class CustomerDeatilsFragment extends Fragment {
                         sharedPreferenceManager.setOrgreqId(ORGREQID);
                         sharedPreferenceManager.setCUSTOMERSUBTYPE(CUSTOMERSUBTYPE);
 
+                        String statusArray = sharedPreferenceManager.getStatusArray();
+
                         Updatetokenandcnr(TOKENNO, statusArray, CRN);
 
                         Toast.makeText(getActivity(), status, Toast.LENGTH_LONG).show();
@@ -499,6 +501,8 @@ public class CustomerDeatilsFragment extends Fragment {
 
                 progressDialog.dismiss();
 
+                Log.d("Updatetokeres",response);
+
                 try {
                     JSONObject jsonObject = new JSONObject(response);
 
@@ -523,7 +527,7 @@ public class CustomerDeatilsFragment extends Fragment {
 
                         String pincode = edit_Pincode.getText().toString().trim();
 
-                        sharedPreferenceManager.setStatusArray(statusArray);
+                        //sharedPreferenceManager.setStatusArray(statusArray);
 
                         GetStateCity(uniqueId,pincode);
 
@@ -559,9 +563,11 @@ public class CustomerDeatilsFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+
                 params.put("tokennumber", tokennumber);
                 params.put("tagactivationid", tagactivationid);
                 params.put("crnnumber", crnnumber);
+
                 return params;
             }
         };
@@ -971,7 +977,7 @@ public class CustomerDeatilsFragment extends Fragment {
                     String responsecode = jsonObject_messages.getString("responsecode");
                     String statusArray = jsonObject_messages.getString("status");
 
-                    sharedPreferenceManager.setStatusArray(statusArray);
+                    //sharedPreferenceManager.setStatusArray(statusArray);
 
                     if (responsecode.equals("00")) {
 

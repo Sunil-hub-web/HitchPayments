@@ -175,7 +175,7 @@ public class TagActivationFragment extends Fragment {
 
         agentId = sessionManager.getSalesAgentId();
 
-        GetBarcode(agentId);
+        //GetBarcode(agentId);
         Getproduct(agentId);
 
         vehicleClass1.put("VC4", "4");
@@ -1231,7 +1231,7 @@ public class TagActivationFragment extends Fragment {
                         str_CustomerName = edit_CustomerName.getText().toString().trim();
                         str_ContactNumber = edit_ContactNumber.getText().toString().trim();
 
-                        sharedPreferenceManager.setStatusArray(tagid);
+                       // sharedPreferenceManager.setStatusArray(tagid);
 
 
 
